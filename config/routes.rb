@@ -1,6 +1,6 @@
 Feasted::Application.routes.draw do
   namespace :admin do
-    resources :wing 
+    resources :wings
   end
 
   match '/admin' => 'admin#index'

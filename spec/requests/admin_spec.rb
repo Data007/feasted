@@ -9,7 +9,7 @@ describe 'Create a Wing' do
     Wing.count.should == 0
 
     click_link 'Room Management'
-    current_path.should == admin_wing_path
+    current_path.should == admin_wings_path
     click_link 'Add a Wing'
     current_path.should == new_admin_wing_path
     fill_in 'Name', with: 'Saint Nicholas Wing'
