@@ -1,0 +1,13 @@
+= form_for  admin_wings_path(@wing) do |wing_form|
+  %fieldset
+    %legend Wing Details
+    .control-group
+      = wing_form.label :name, 'Wing Name'
+      .controls
+        = wing_form.text_field :name
+    .control-group
+      = wing_form.label :amount_of_rooms, 'Wing Name'
+      .controls
+        = wing_form.number_field :amount_of_rooms
+    .form-actions
+      = wing_form.submit 'Save'

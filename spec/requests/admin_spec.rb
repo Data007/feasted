@@ -13,6 +13,7 @@ describe 'Create a Wing' do
     click_link 'Add a Wing'
     current_path.should == new_admin_wing_path
     fill_in 'Name', with: 'Saint Nicholas Wing'
+    
 
     Wing.count.should == 1
     Wing.first.name.should == 'Sain Nicholas Wing'
