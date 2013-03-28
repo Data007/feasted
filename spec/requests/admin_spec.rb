@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Create a Wing' do
+describe 'Wing Management' do
   before do
     visit admin_path
   end

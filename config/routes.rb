@@ -4,4 +4,6 @@ Feasted::Application.routes.draw do
   end
 
   match '/admin' => 'admin#index'
+
+  root to: 'wings#index'
 end
