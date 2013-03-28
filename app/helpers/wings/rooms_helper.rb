@@ -1,0 +1,2 @@
+module Wings::RoomsHelper
+end
