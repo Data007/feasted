@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :wing do
+    name 'North'
+    amount_of_rooms 10
   end
 end

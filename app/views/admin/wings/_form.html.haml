@@ -1,4 +1,4 @@
-= form_for  admin_wings_path(@wing) do |wing_form|
+= form_for  [:admin, @wing] do |wing_form|
   %fieldset
     %legend Wing Details
     .control-group
@@ -6,8 +6,13 @@
       .controls
         = wing_form.text_field :name
     .control-group
-      = wing_form.label :amount_of_rooms, 'Wing Name'
+      = wing_form.label :amount_of_rooms, 'Amount of Rooms'
       .controls
         = wing_form.number_field :amount_of_rooms
     .form-actions
       = wing_form.submit 'Save'
+
+- unless @wing.new_record?
+  %button.bg-color-red
+    = link_to 'Delete Wing', [:admin, @wing], method: :delete, class: 'btn btn-danger'
+  
