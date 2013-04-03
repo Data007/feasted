@@ -1,1 +1,8 @@
-%h1 Rooms will show up here!
+- @rooms.each do |room|      
+  .tiles
+    %a.tile.icon.bg-color-green{}
+      .tile-content
+        %h1.icon-large.icon-database
+      .brand
+        .name
+          = room.number
