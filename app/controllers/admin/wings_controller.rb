@@ -13,7 +13,6 @@ class Admin::WingsController < AdminController
 
   def update
     @wing.update_attributes params[:wing]
-    binding.pry
     if params[:wing][:amount_of_rooms]
         @wing.update_rooms((params[:wing][:amount_of_rooms]).to_i)
     end
