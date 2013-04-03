@@ -25,6 +25,7 @@ describe Wing do
     it 'removes rooms' do
       @wing.rooms.count.should == 10
 
+
       @wing.update_rooms(5)
       @wing.reload
       @wing.rooms.count.should == 5

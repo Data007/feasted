@@ -16,10 +16,10 @@ class Wing
   end
 
   def update_rooms(new_amount_of_rooms)
-    if amount_of_rooms < new_amount_of_rooms
-      add_rooms(new_amount_of_rooms - amount_of_rooms)
-    elsif new_amount_of_rooms < amount_of_rooms
-      destroy_rooms(amount_of_rooms - new_amount_of_rooms)
+    if rooms.count < new_amount_of_rooms
+      add_rooms(new_amount_of_rooms - rooms.count)
+    elsif new_amount_of_rooms < rooms.count
+      destroy_rooms(rooms.count - new_amount_of_rooms)
     end
 
     return 'sucessfully updated'

@@ -25,22 +25,28 @@ describe 'Wing Management' do
 
   context 'with a wing' do
     before do
-      @wing = FactoryGirl.create :wing
+      @wing = FactoryGirl.create :wing, amount_of_rooms: 0
+      @wing.update_rooms(10)
+      @wing.reload
+      @wing.update_attribute('amount_of_rooms', 10)
+      @wing.reload
       click_link 'Wing Management'
     end
 
     it 'edits a wing' do
+      @wing.rooms.count == 10
       click_link 'North'
 
       current_path.should == edit_admin_wing_path(@wing)
 
       fill_in 'Name', with: 'Saint Nicholas Wing'
-      fill_in 'amount of rooms', with: 15
+      fill_in 'Amount of Rooms', with: 15
       click_button 'Save'  
 
       @wing.reload
       @wing.name.should == 'Saint Nicholas Wing'
       @wing.amount_of_rooms == 15
+      @wing.rooms.count.should == 15
     end
 
     it 'deletes a wing' do
