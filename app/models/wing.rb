@@ -7,13 +7,20 @@ class Wing
 
   has_many :rooms
 
+  def instantiate_rooms
+    if self.rooms.count != amount_of_rooms && self.rooms.count == 0
+      amount_of_rooms.times do |index|
+        self.rooms.create(number: index + 1)
+      end
+    end 
+  end
+
   def update_rooms(new_amount_of_rooms)
     if amount_of_rooms < new_amount_of_rooms
       add_rooms(new_amount_of_rooms - amount_of_rooms)
     elsif new_amount_of_rooms < amount_of_rooms
       destroy_rooms(amount_of_rooms - new_amount_of_rooms)
     end
-    
 
     return 'sucessfully updated'
   end

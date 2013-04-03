@@ -7,9 +7,7 @@ class Admin::WingsController < AdminController
 
   def create
     @wing = Wing.create params[:wing]
-    if params[:wing][:amount_of_rooms]
-      @wing.update_rooms((params[:wing][:amount_of_rooms]).to_i)
-    end
+    @wing.instantiate_rooms
     redirect_to admin_wings_path
   end
 
