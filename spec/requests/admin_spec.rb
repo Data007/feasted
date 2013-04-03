@@ -20,7 +20,7 @@ describe 'Wing Management' do
     Wing.first.name.should == 'Saint Nicholas Wing'
   end
 
-  context 'with a project' do
+  context 'with a wing' do
     before do
       @wing = FactoryGirl.create :wing
       click_link 'Wing Management'
