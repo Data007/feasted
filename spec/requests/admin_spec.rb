@@ -60,5 +60,21 @@ describe 'Wing Management' do
 
       Wing.count.should == 0
     end
+
+    context 'with a rooms' do
+      before do
+        @room = @wing.rooms.first
+      end
+
+      it 'creates the amount of patients in a rooms' do
+        click_link 'North'
+        current_url.should == url_for([:edit, :admin, @wing])
+        click_link 'Room Management'
+        current_url.should == [:admin, @wing, :rooms]
+        click_link '2 Patients'
+
+        @room.patients.count.should == 2
+      end
+    end
   end
 end
