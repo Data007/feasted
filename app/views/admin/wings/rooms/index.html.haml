@@ -1,8 +1,8 @@
-- 2.times do |index|
+- @rooms.each do |room|
   .tiles
-    %a.tile.icon.bg-color-green{}
+    %a.tile.icon.bg-color-green{href: edit_admin_wing_room_path(@wing, room) }
       .tile-content
         %h1.icon-large.icon-database
       .brand
         .name
-          = index.to_s + 'Patients' 
+          = "Room #{room.number.to_s}"

@@ -30,6 +30,7 @@ describe 'Wing Management' do
       @wing.reload
       @wing.update_attribute('amount_of_rooms', 10)
       @wing.reload
+      @room = @wing.rooms.first
       click_link 'Wing Management'
     end
 
@@ -71,7 +72,8 @@ describe 'Wing Management' do
         current_url.should == url_for([:edit, :admin, @wing])
         click_link 'Room Management'
         current_url.should == url_for([:admin, @wing, :rooms])
-        binding.pry
+        click_link 'Room 1'
+        current_url.should == url_for([:edit, :admin, @wing, @room])
         click_link '2 Patients'
 
         @room.patients.count.should == 2
