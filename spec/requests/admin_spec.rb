@@ -70,7 +70,8 @@ describe 'Wing Management' do
         click_link 'North'
         current_url.should == url_for([:edit, :admin, @wing])
         click_link 'Room Management'
-        current_url.should == [:admin, @wing, :rooms]
+        current_url.should == url_for([:admin, @wing, :rooms])
+        binding.pry
         click_link '2 Patients'
 
         @room.patients.count.should == 2

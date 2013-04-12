@@ -1,6 +1,8 @@
 Feasted::Application.routes.draw do
   namespace :admin do
-    resources :wings
+    resources :wings do
+      resources :rooms, controller: 'wings/rooms'
+    end
   end
 
   resources :wings do

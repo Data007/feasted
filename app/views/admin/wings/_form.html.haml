@@ -15,4 +15,10 @@
 - unless @wing.new_record?
   %button.bg-color-red
     = link_to 'Delete Wing', [:admin, @wing], method: :delete, class: 'btn btn-danger'
+  %a.tile.icon.bg-color-green{href: admin_wing_rooms_path(@wing)}
+    .tile-content
+      %h1.icon-large.icon-database
+    .brand
+      .name
+        Room Management
   
