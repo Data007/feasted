@@ -1,5 +1,5 @@
 - 2.times do |index|
-  %a.tile.icon.bg-color-green{ }
+  %a.tile.icon.bg-color-green{href: update_patients_admin_wing_room_path(wing_id: @wing.id, id: @room.id, patient_count: index + 1)}
     .tile-content
       %h1.icon-large.icon-lab
     .brand

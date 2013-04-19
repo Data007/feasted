@@ -68,7 +68,6 @@ describe 'Wing Management' do
       end
 
       it 'creates the amount of patients in a rooms' do
-        @room.patients.count.should == 1
         visit url_for([:edit, :admin, @wing, @room])
         click_link '2 Patients'
 
