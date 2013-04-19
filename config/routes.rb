@@ -12,7 +12,9 @@ Feasted::Application.routes.draw do
   end
 
   resources :wings do
-    resources :rooms, controller: 'wings/rooms'
+    resources :rooms, controller: 'wings/rooms' do
+      resources :patients, controller: 'wings/rooms/patients'
+    end
   end
 
   match '/admin' => 'admin#index'
