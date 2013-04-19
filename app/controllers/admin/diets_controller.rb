@@ -1,4 +1,4 @@
-class Admin::DietsController < ApplicationController
+class Admin::DietsController < AdminController
   before_filter :find_diet, except: [:new, :create, :index]
 
   def new

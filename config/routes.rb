@@ -4,6 +4,7 @@ Feasted::Application.routes.draw do
       resources :rooms, controller: 'wings/rooms'
     end
     resources :diets
+    resources :foods
   end
 
   resources :wings do

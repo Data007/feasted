@@ -127,5 +127,56 @@ describe 'Wing Management' do
         end
       end
     end
+
+    context 'food management' do
+      before do
+        visit url_for([:admin])
+      end
+
+      it 'creates a Food Item' do
+        Food.count.should == 0
+        click_link 'Food Management'
+        current_url.should == url_for([:admin, :foods])
+        click_link 'Add a Food'
+        current_url.should == url_for([:new, :admin, :food])
+
+        fill_in 'Name', with: 'Pizza'
+        click_button 'Save'
+
+        Food.count.should == 1
+        Food.first.name.should == 'Pizza'
+      end
+
+      context 'with a Food Item' do
+        before do 
+          @food = FactoryGirl.create :food
+          visit url_for([:admin, :foods])
+        end
+
+        it 'edits a diet' do
+          click_link 'Pizza'
+
+          current_path.should == edit_admin_food_path(@food)
+
+          fill_in 'Name', with: 'Chicken Pizza'
+          click_button 'Save'  
+
+          @food.reload
+          @food.name.should == 'Chicken Pizza'
+        end
+
+        it 'deletes a wing' do
+          Food.count.should == 1
+
+          click_link 'Pizza'
+          current_path.should == edit_admin_food_path(@food)
+
+          click_link 'Delete Food'
+          current_path.should == admin_foods_path
+
+          Food.count.should == 0
+        end
+      end
+    end
   end
 end
