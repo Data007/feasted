@@ -68,15 +68,63 @@ describe 'Wing Management' do
       end
 
       it 'creates the amount of patients in a rooms' do
-        click_link 'North'
-        current_url.should == url_for([:edit, :admin, @wing])
-        click_link 'Room Management'
-        current_url.should == url_for([:admin, @wing, :rooms])
-        click_link 'Room 1'
-        current_url.should == url_for([:edit, :admin, @wing, @room])
+        @room.patients.count.should == 1
+        visit url_for([:edit, :admin, @wing, @room])
         click_link '2 Patients'
 
         @room.patients.count.should == 2
+        @room.patients.last.number.should == 2
+      end
+    end
+
+    context 'diet management' do
+      before do
+        visit url_for([:admin])
+      end
+
+      it 'creates a diet' do
+        Diet.count.should == 0
+        click_link 'Diet Management'
+        current_url.should == url_for([:admin, :diets])
+        click_link 'Add a Diet'
+        current_url.should == url_for([:new, :admin, :diet])
+
+        fill_in 'Name', with: 'Diabetic'
+        click_button 'Save'
+
+        Diet.count.should == 1
+        Diet.first.name.should == 'Diabetic'
+      end
+
+      context 'with a diet' do
+        before do 
+          @diet = FactoryGirl.create :diet
+          visit url_for([:admin, :diets])
+        end
+
+        it 'edits a diet' do
+          click_link 'Diabetic'
+
+          current_path.should == edit_admin_diet_path(@diet)
+
+          fill_in 'Name', with: 'Light Salt Diabetic'
+          click_button 'Save'  
+
+          @diet.reload
+          @diet.name.should == 'Light Salt Diabetic'
+        end
+
+        it 'deletes a wing' do
+          Diet.count.should == 1
+
+          click_link 'Diabetic'
+          current_path.should == edit_admin_diet_path(@diet)
+
+          click_link 'Delete Diet'
+          current_path.should == admin_diets_path
+
+          Diet.count.should == 0
+        end
       end
     end
   end

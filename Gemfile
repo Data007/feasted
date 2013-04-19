@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby '2.0.0'
 gem 'rails', '3.2.13'
@@ -14,6 +14,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+#testing for soap
+gem 'execjs'
+gem 'therubyracer'
+
+
+
 gem 'jquery-rails'
 gem 'puma'
 
@@ -27,9 +33,10 @@ gem 'mongoid', '~>3.0'
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'capybara', '1.1.2'
+  gem 'capybara'
   gem 'launchy'
   gem 'mongoid-rspec'
+  gem 'fakeweb'
   gem 'rack_session_access'
   gem 'pry'
   gem 'pry-nav'

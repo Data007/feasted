@@ -1,0 +1,2 @@
+module Admin::DietsHelper
+end

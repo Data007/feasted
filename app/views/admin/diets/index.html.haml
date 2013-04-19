@@ -1,0 +1,16 @@
+.tiles
+  %a.tile.icon.bg-color-green{href: new_admin_diet_path}
+    .tile-content
+      %h1.icon-large.icon-lab
+    .brand
+      .name
+        Add a Diet
+
+- @diets.each do |diet|      
+  .tiles
+    %a.tile.icon.bg-color-green{href: edit_admin_diet_path(diet)}
+      .tile-content
+        %h1.icon-large.icon-database
+      .brand
+        .name
+          = diet.name
