@@ -1,0 +1,13 @@
+= form_for  [:admin, @food] do |food_form|
+  %fieldset
+    %legend Food Details
+    .control-group
+      = food_form.label :name, 'Food Name'
+      .controls
+        = food_form.text_field :name
+    .form-actions
+      = food_form.submit 'Save'
+
+- unless @food.new_record?
+  %button.bg-color-red
+    = link_to 'Delete Food', [:admin, @food], method: :delete, class: 'btn btn-danger'

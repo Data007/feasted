@@ -1,0 +1,16 @@
+.tiles
+  %a.tile.icon.bg-color-green{href: new_admin_food_path()}
+    .tile-content
+      %h1.icon-large.icon-database
+    .brand
+      .name
+        Add a Food
+
+- @foods.each do |food|      
+  .tiles
+    %a.tile.icon.bg-color-green{href: edit_admin_food_path(food)}
+      .tile-content
+        %h1.icon-large.icon-database
+      .brand
+        .name
+          = food.name
