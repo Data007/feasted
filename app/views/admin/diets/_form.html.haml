@@ -11,3 +11,9 @@
 - unless @diet.new_record?
   %button.bg-color-red
     = link_to 'Delete Diet', [:admin, @diet], method: :delete, class: 'btn btn-danger'
+  %a.tile.icon.bg-color-green{href: admin_diet_foods_path(@diet)}
+    .tile-content
+      %h1.icon-large.icon-lab
+    .brand
+      .name
+        Add Food

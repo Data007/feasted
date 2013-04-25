@@ -3,4 +3,6 @@ class Food
   include Mongoid::Timestamps
 
   field :name
+
+  belongs_to :diet
 end

@@ -152,7 +152,7 @@ describe 'Wing Management' do
           visit url_for([:admin, :foods])
         end
 
-        it 'edits a diet' do
+        it 'edits a Food Item' do
           click_link 'Pizza'
 
           current_path.should == edit_admin_food_path(@food)
@@ -164,7 +164,7 @@ describe 'Wing Management' do
           @food.name.should == 'Chicken Pizza'
         end
 
-        it 'deletes a wing' do
+        it 'deletes a Food Item' do
           Food.count.should == 1
 
           click_link 'Pizza'
@@ -174,6 +174,21 @@ describe 'Wing Management' do
           current_path.should == admin_foods_path
 
           Food.count.should == 0
+        end
+      end
+
+      context 'adding food to a Diet' do
+        before do
+          @food = FactoryGirl.create :food
+          @diet = FactoryGirl.create :diet
+          visit url_for([:edit, :admin, @diet])
+        end
+
+        it 'adds a food item to a diet' do
+          click_link 'Add Food'
+          current_url.should == url_for([:admin, @diet, :foods])
+          click_link @food.name
+          @diet.foods.count.should == 1
         end
       end
     end

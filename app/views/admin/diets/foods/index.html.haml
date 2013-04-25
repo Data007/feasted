@@ -1,0 +1,2 @@
+- @foods.each do |food|      
+  =link_to food.name, admin_diet_foods_path(id: @diet.id, food_id: food.id), method: :post, class: "tile icon bg-color-green"  

@@ -7,7 +7,9 @@ Feasted::Application.routes.draw do
         end
       end
     end
-    resources :diets
+    resources :diets do
+      resources :foods, controller: 'diets/foods'
+    end
     resources :foods
   end
 
