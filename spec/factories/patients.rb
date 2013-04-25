@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :patient do
+    number '1'
   end
 end

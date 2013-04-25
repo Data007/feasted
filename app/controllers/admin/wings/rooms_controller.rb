@@ -12,6 +12,7 @@ class Admin::Wings::RoomsController < Admin::WingsController
   end
 private
   def find_room
-    @room = @wing.rooms.find(params[:id])
+    room_id = params[:room_id].present? ? params[:room_id] : params[:id]
+    @room = Room.find(room_id)
   end
 end

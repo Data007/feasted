@@ -5,4 +5,5 @@ class Diet
   field :name
 
   has_many :foods
+  belongs_to :patient
 end

@@ -5,4 +5,5 @@ class Patient
   field :number
 
   belongs_to :room
+  has_many :diets
 end

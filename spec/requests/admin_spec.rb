@@ -190,6 +190,55 @@ describe 'Wing Management' do
           click_link @food.name
           @diet.foods.count.should == 1
         end
+
+        context 'diet with a food item' do
+          before do
+            @diet.foods << @food
+            @diet.save!
+            click_link 'Add Food'
+          end
+
+          it 'views the food items attached to the diet' do
+            page.should have_content(@diet.foods.first.name)
+          end
+        end
+
+        context 'adding a diet to a patient' do 
+          before do
+            
+            @wing = FactoryGirl.create :wing, amount_of_rooms: 0
+            @wing.update_rooms(10)
+            @wing.reload
+            @wing.update_attribute('amount_of_rooms', 10)
+            @wing.reload
+            @room = @wing.rooms.first
+            @room.patients << FactoryGirl.create(:patient) 
+            @room.reload
+            @patient = @room.patients.first
+            visit url_for([:edit, :admin, @wing, @room])
+          end
+
+          it 'adds a diet to a patient' do
+            @patient.diets.count.should == 0
+            click_link 'Patient Management'
+            current_url.should == url_for([:admin, @wing, @room, :patients])
+            click_link @patient.number
+            current_url.should == url_for([:edit, :admin, @wing, @room, @patient])
+            click_link @diet.name
+            @patient.diets.count.should == 1
+          end
+
+          context 'diet with a patient' do
+            before do
+              @patient.diets << FactoryGirl.create(:diet)
+              visit url_for([:edit, :admin, @wing, @room, @patient])
+            end
+
+            it 'views the diets' do
+              page.should have_content(@patient.diets.first.name)
+            end
+          end
+        end
       end
     end
   end
