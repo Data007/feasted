@@ -3,6 +3,7 @@ class Food
   include Mongoid::Timestamps
 
   field :name
+  field :type, default: 'Breakfast'
 
   belongs_to :diet
 end

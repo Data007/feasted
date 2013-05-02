@@ -26,5 +26,25 @@ describe 'Creating an Food Order' do
       visit url_for([@wing, :rooms])
       page.should have_content(@wing.rooms.first.number)
     end
+
+    context 'with a room with patients 'do
+      before do
+        @room = @wing.rooms.first
+        @room.instantiate_patients(2)
+        @room.reload
+        @patient = @room.patients.first
+        visit url_for([@wing, @room, :patients])
+      end
+
+      it 'selects a patient' do
+        click_link '1'
+        current_url.should == url_for([@wing, @room, @patient, :meals])
+      end
+
+      it 'selects a meal' do
+        click_link '1'
+        page.should have_content('Breakfast')
+      end
+    end
   end
 end

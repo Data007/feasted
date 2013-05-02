@@ -113,7 +113,7 @@ describe 'Wing Management' do
           @diet.name.should == 'Light Salt Diabetic'
         end
 
-        it 'deletes a wing' do
+        it 'deletes a diet' do
           Diet.count.should == 1
 
           click_link 'Diabetic'
@@ -140,6 +140,7 @@ describe 'Wing Management' do
         current_url.should == url_for([:new, :admin, :food])
 
         fill_in 'Name', with: 'Pizza'
+        select 'Lunch', from: 'type' 
         click_button 'Save'
 
         Food.count.should == 1

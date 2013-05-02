@@ -5,6 +5,11 @@
       = food_form.label :name, 'Food Name'
       .controls
         = food_form.text_field :name
+    .control-group
+      = food_form.label :type, 'Type'
+      .controls
+        = food_form.select :type, [['Breakfast', 'Breakfast'], ['Lunch', 'Lunch'], ['Supper', 'Supper']]
+
     .form-actions
       = food_form.submit 'Save'
 

@@ -16,7 +16,11 @@ Feasted::Application.routes.draw do
 
   resources :wings do
     resources :rooms, controller: 'wings/rooms' do
-      resources :patients, controller: 'wings/rooms/patients'
+      resources :patients, controller: 'wings/rooms/patients' do
+        resources :meals, controller: 'wings/rooms/patients/meals' do
+          resources :orders, controller: 'wings/rooms/patients/meals/orders'
+        end
+      end
     end
   end
 
