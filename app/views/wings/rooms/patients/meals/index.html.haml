@@ -1,6 +1,6 @@
 - %w(Breakfast Lunch Supper).each do |meal|
   .tiles
-    %a.tile.icon.bg-color-green{}
+    %a.tile.icon.bg-color-green{href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: meal)}
       .tile-content
         %h1.icon-large.icon-database
       .brand

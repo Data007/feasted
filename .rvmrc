@@ -1,1 +1,2 @@
 rvm use 2.0.0@feasted --create
+rvm rvmrc warning ignore /home/data/websites/feasted/.rvmrc

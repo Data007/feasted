@@ -44,6 +44,8 @@ describe 'Creating an Food Order' do
       it 'selects a meal' do
         click_link '1'
         page.should have_content('Breakfast')
+        click_link 'Breakfast'
+        current_url.should == url_for([:edit, @wing, @room, @patient, @patient.meals.first])
       end
     end
   end
