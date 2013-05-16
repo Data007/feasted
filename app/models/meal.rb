@@ -6,5 +6,6 @@ class Meal
 
   belongs_to :patient
   has_many :orders
+  has_many :foods
 
 end

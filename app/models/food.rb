@@ -6,4 +6,5 @@ class Food
   field :type, default: 'Breakfast'
 
   belongs_to :diet
+  belongs_to :meal
 end

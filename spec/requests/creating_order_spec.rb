@@ -47,6 +47,22 @@ describe 'Creating an Food Order' do
         click_link 'Breakfast'
         current_url.should == url_for([:edit, @wing, @room, @patient, @patient.meals.first])
       end
+
+      context 'with a meal' do
+        before do
+          @meal = @patient.meals.create(type: 'Breakfast')
+          visit url_for([:edit, @wing, @room, @patient, @meal])
+          current_url.should == url_for([:edit, @wing, @room, @patient, @meal])
+        end
+
+        it 'adds food to a meal' do
+          binding.pry
+          @meal.foods.count.should == 0
+          #there is no diet on the patient
+          click_link @patient.diets.first.foods.first 
+          @meal.foods.count.should == 1
+        end
+      end
     end
   end
 end
