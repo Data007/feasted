@@ -50,17 +50,33 @@ describe 'Creating an Food Order' do
 
       context 'with a meal' do
         before do
-          @meal = @patient.meals.create(type: 'Breakfast')
+          @meal = @patient.meals.create(type: 'Supper')
+          @diet = @patient.diets.create
+          @diet.foods << FactoryGirl.create(:food)
           visit url_for([:edit, @wing, @room, @patient, @meal])
           current_url.should == url_for([:edit, @wing, @room, @patient, @meal])
         end
 
         it 'adds food to a meal' do
-          binding.pry
           @meal.foods.count.should == 0
-          #there is no diet on the patient
-          click_link @patient.diets.first.foods.first 
+          click_link @patient.diets.first.foods.first.name 
           @meal.foods.count.should == 1
+        end
+
+        context 'with a meal with food' do 
+          before do
+            @meal.foods << FactoryGirl.create(:food)
+          end
+
+          it 'places an order' do 
+            Order.count.should == 0
+            click_link 'Place Order'
+            Order.count.should == 1
+            @meal.orders.count.should == 1
+            click_link 'Place Order'
+            Order.count.should_not == 2
+            @meal.orders.count.should_not >=2
+          end
         end
       end
     end

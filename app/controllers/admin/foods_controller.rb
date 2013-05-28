@@ -25,10 +25,9 @@ class Admin::FoodsController < AdminController
   end
 
 private
-  def find_diet
+  def find_food
     food_id = params[:food_id].present? ? params[:food_id] : params[:id]
     @food = Food.find(food_id)
-    
   end
   
 end

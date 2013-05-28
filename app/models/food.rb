@@ -7,4 +7,5 @@ class Food
 
   belongs_to :diet
   belongs_to :meal
+  belongs_to :order
 end
