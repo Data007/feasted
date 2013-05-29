@@ -4657,8 +4657,8 @@ table.bordered tbody tr:last-child td {
   display: block;
   float: left;
   background-color: #525252;
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   cursor: pointer;
   box-shadow: inset 0px 0px 1px #FFFFCC;
   text-decoration: none;
