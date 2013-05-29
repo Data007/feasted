@@ -6,9 +6,9 @@
       .controls
         = food_form.text_field :name
     .control-group
-      = food_form.label :type, 'Type'
+      = food_form.label :kind, 'Type'
       .controls
-        = food_form.select :type, [['Breakfast', 'Breakfast'], ['Lunch', 'Lunch'], ['Supper', 'Supper']]
+        = food_form.select :kind, [['Breakfast', 'Breakfast'], ['Lunch', 'Lunch'], ['Supper', 'Supper']]
 
     .form-actions
       = food_form.submit 'Save'

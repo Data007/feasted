@@ -14,13 +14,11 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
 
   def edit_order
     @food = find_food
-    binding.pry
-    @order.foods += [@order]
+    @order.foods += [@food]
     redirect_to [:edit, @wing, @room, @patient, @meal, @order]
   end
 
   def destroy
-    binding.pry
     @food = find_food
     @order.foods = @order.foods.delete_if {|food| food == @food}
     redirect_to [:edit, @wing, @room, @patient, @meal, @order] 

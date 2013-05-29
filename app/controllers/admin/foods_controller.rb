@@ -1,5 +1,5 @@
 class Admin::FoodsController < AdminController
-  before_filter :find_diet, except: [:new, :create, :index]
+  before_filter :find_food, except: [:new, :create, :index]
 
   def new
     @food = Food.new
@@ -12,6 +12,9 @@ class Admin::FoodsController < AdminController
 
   def index
     @foods = Food.all
+  end
+
+  def edit
   end
 
   def update

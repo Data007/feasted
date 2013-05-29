@@ -12,6 +12,7 @@ Feasted::Application.routes.draw do
       resources :foods, controller: 'diets/foods'
     end
     resources :foods
+    resources :orders
   end
 
   resources :wings do
