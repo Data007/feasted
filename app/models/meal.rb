@@ -6,7 +6,7 @@ class Meal
 
   belongs_to :patient
   has_many :orders
-  has_many :foods
+  has_and_belongs_to_many :foods
 
   def create_order meal
     order = Order.create(meal_id: meal.id, patient_id: meal.patient.id, type: meal.type)

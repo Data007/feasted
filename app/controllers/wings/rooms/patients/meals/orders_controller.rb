@@ -1,24 +1,28 @@
 class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::MealsController
   before_filter :find_order, except: [:index]
+  before_filter :find_patient
+  before_filter :find_meal
 
   def index
 
   end
 
   def edit
-    binding.pry
-    @edible_foods = @order.meal.patient.foods(@order.meal)
+    @edible_foods = @patient.foods(@meal)
     @foods = @order.foods
   end
 
   def edit_order
+    @food = find_food
     binding.pry
+    @order.foods += [@order]
+    redirect_to [:edit, @wing, @room, @patient, @meal, @order]
   end
 
   def destroy
+    binding.pry
     @food = find_food
-    @meal.foods = @meal.foods.reject {|food| food == @food}
-    @meal.save!
+    @order.foods = @order.foods.delete_if {|food| food == @food}
     redirect_to [:edit, @wing, @room, @patient, @meal, @order] 
   end
 
@@ -32,9 +36,5 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
   def find_food
     food_id = params[:food_id]
     @food = Food.find(food_id)
-  end
-
-  def find_patient order
-    @order_patient = Patient.find(order.patient_id)
   end
 end
