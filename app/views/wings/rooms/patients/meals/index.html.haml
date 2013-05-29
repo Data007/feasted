@@ -1,9 +1,22 @@
-- %w(Breakfast Lunch Supper).each do |meal|
-  .tiles
-    %a.tile.icon.bg-color-green{href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: meal)}
-      .tile-content
-        %h1.icon-large.icon-database
-      .brand
-        .name
-          = meal
+.tiles
+  %a.tile.icon.bg-color-green{href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: "Breakfast")}
+    .tile-content
+      %h1.icon-large.icon-coffee
+    .brand
+      .name
+        Breakfast
+.tiles
+  %a.tile.icon.bg-color-green{href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: "Lunch")}
+    .tile-content
+      %h1.icon-large.icon-delicious
+    .brand
+      .name
+        Lunch
+.tiles
+  %a.tile.icon.bg-color-green{href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: "Supper")}
+    .tile-content
+      %h1.icon-large.icon-fire
+    .brand
+      .name
+        Supper
   
