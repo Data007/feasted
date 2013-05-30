@@ -20,4 +20,8 @@ class Patient
       return []
     end
   end
+
+  def color
+    return "red"
+  end
 end

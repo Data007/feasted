@@ -1,5 +1,6 @@
 .tiles
-  %a.tile.icon.bg-color-green{href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: "Breakfast")}
+  - binding.pry
+  %a{:class => "tile icon bg-color-#{@patient.color}", href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: "Breakfast")}
     .tile-content
       %h1.icon-large.icon-coffee
     .brand
