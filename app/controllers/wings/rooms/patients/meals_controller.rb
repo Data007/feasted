@@ -30,7 +30,6 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
   end
 
   def place_order
-    binding.pry
     orders = @meal.orders.select {|order| order.created_at.today?}
     orders = orders.select {|order| order.type == @meal.type }
     unless orders.length >= 1 

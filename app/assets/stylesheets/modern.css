@@ -1819,6 +1819,9 @@ li .icon-large:before {
 .bg-color-red {
   background-color: #b91d47 !important;
 }
+.bg-color-redDark {
+  background-color: #FF0000 !important;
+}
 .bg-color-yellow {
   background-color: #ffc40d !important;
 }
@@ -5585,6 +5588,7 @@ input[type=submit] {
 .red {
   color: red;
 }
+
 .black {
   color: black;
 }
