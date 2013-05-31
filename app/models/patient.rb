@@ -31,4 +31,13 @@ class Patient
       return "redDark"
     end
   end
+
+  def patient_color
+    meals_ordered = [color("Breakfast"), color("Lunch"), color("Supper")]
+    if meals_ordered.include?("redDark")
+      return "redDark"
+    else
+      return "green"
+    end
+  end
 end
