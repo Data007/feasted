@@ -24,4 +24,16 @@ class Room
       self.patients.create number: (index + 1)
     end
   end
+
+  def color
+    patients_ordered = []
+    patients.each do |patient|
+      patients_ordered << patient.patient_color
+    end
+    if patients_ordered.include?("redDark")
+      return "redDark"
+    else
+      return "green"
+    end
+  end
 end

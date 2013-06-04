@@ -1,6 +1,6 @@
 - @wings.each do |wing|      
   .tiles
-    %a.tile.icon.bg-color-green{href: wing_rooms_path(wing)}
+    %a{:class => "tile icon bg-color-#{wing.color}", href: wing_rooms_path(wing)}
       .tile-content
         %h1.icon-large.icon-plus-2
       .brand

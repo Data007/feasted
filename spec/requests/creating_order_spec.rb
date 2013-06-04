@@ -77,6 +77,10 @@ describe 'Creating an Food Order' do
             Order.count.should_not == 2
             @meal.orders.count.should_not >=2
           end
+
+          context 'with an order' do
+
+          end
         end
       end
     end

@@ -38,4 +38,17 @@ class Wing
       self.save
     end
   end
+
+  def color
+    rooms_color = []
+    rooms.each do |room|
+      rooms_color << room.color
+    end
+
+    if rooms_color.include?("redDark")
+      return "redDark"
+    else
+      return "green"
+    end
+  end
 end
