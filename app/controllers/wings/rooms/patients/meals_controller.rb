@@ -33,8 +33,8 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
     orders = @meal.orders.select {|order| order.created_at.today?}
     orders = orders.select {|order| order.type == @meal.type }
     unless orders.length >= 1 
-      @meal.create_order(@meal)
-      redirect_to [:edit, @wing, @room, @patient, @meal, orders.first], flash: {notice: "Your Order has been placed"}
+      order = @meal.create_order(@meal)
+      redirect_to [:edit, @wing, @room, @patient, @meal, order], flash: {notice: "Your Order has been placed"}
       return
     end
     redirect_to [:edit, @wing,@room, @patient, @meal, @meal.orders.first ], flash: {notice: "Your Order has already been placed! You are now Editing that Order!"}
