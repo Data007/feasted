@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :food do
     name 'Pizza'
-    type 'Supper'
+    kind 'Supper'
   end
 end

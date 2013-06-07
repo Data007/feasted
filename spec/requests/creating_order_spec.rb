@@ -50,7 +50,7 @@ describe 'Creating an Food Order' do
 
       context 'with a meal' do
         before do
-          @meal = @patient.meals.create(type: 'Supper')
+          @meal = @patient.meals.create(kind: 'Supper')
           @diet = @patient.diets.create
           @diet.foods << FactoryGirl.create(:food)
           visit url_for([:edit, @wing, @room, @patient, @meal])
@@ -60,12 +60,16 @@ describe 'Creating an Food Order' do
         it 'adds food to a meal' do
           @meal.foods.count.should == 0
           click_link @patient.diets.first.foods.first.name 
+          @meal.reload
           @meal.foods.count.should == 1
         end
 
         context 'with a meal with food' do 
           before do
+            diet = @meal.patient.diets.first
             @meal.foods << FactoryGirl.create(:food)
+            diet.foods << FactoryGirl.create(:food, kind: 'Lunch')
+            diet.foods << FactoryGirl.create(:food, kind: 'Breakfast')
           end
 
           it 'places an order' do 
@@ -73,12 +77,18 @@ describe 'Creating an Food Order' do
             click_link 'Place Order'
             Order.count.should == 1
             @meal.orders.count.should == 1
-            click_link 'Place Order'
+            current_url.should == url_for([:edit, @wing, @room, @patient, @meal, @meal.orders.first])
             Order.count.should_not == 2
             @meal.orders.count.should_not >=2
           end
 
-          context 'with an order' do
+          it 'rejects an order without food in it' do
+            @meal.foods = []
+            Order.count.should == 0
+            page.should have_content('Pizza')
+            click_link 'Place Order'
+            Order.count.should == 0
+            page.should have_content('Please Add food to the Order!')
 
           end
         end

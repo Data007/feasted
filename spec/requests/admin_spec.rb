@@ -140,7 +140,7 @@ describe 'Wing Management' do
         current_url.should == url_for([:new, :admin, :food])
 
         fill_in 'Name', with: 'Pizza'
-        select 'Lunch', from: 'type' 
+        select 'Lunch', from: 'food_kind' 
         click_button 'Save'
 
         Food.count.should == 1

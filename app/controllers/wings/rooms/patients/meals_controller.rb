@@ -33,6 +33,11 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
     orders = @meal.orders.select {|order| order.created_at.today?}
     orders = orders.select {|order| order.type == @meal.type }
     unless orders.length >= 1 
+      if @meal.foods.count <= 0 
+        redirect_to [:edit, @wing, @room, @patient, @meal], flash: {error: "Please Add food to the Order!"}
+        return
+      end
+
       order = @meal.create_order(@meal)
       redirect_to [:edit, @wing, @room, @patient, @meal, order], flash: {notice: "Your Order has been placed"}
       return

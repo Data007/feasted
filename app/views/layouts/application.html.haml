@@ -13,4 +13,6 @@
     = javascript_include_tag "application"
 
   %body
+    = flash[:notice]
+    = flash[:error]
     = yield

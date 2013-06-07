@@ -11,7 +11,7 @@ class Patient
 
   def foods meal_object
     self.diets.each do |diet|
-      @foods = diet.foods.select {|food| food.kind == meal_object.type}
+      @foods = diet.foods.select {|food| food.kind == meal_object.kind}
     end
 
     if @foods != nil
