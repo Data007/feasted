@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Wings::Rooms::Patient::MealsController do
+describe Wings::Rooms::Patients::MealsController do
 
 end
