@@ -28,7 +28,7 @@ gem 'haml-rails'
 gem 'ruby-haml-js'
 gem 'haml_coffee_assets'
 
-gem 'mongoid', '~>3.0'
+gem 'mongoid'
 
 group :test, :development do
   gem 'factory_girl_rails'

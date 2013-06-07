@@ -205,7 +205,7 @@ DEPENDENCIES
   haml_coffee_assets
   jquery-rails
   launchy
-  mongoid (~> 3.0)
+  mongoid
   mongoid-rspec
   pry
   pry-nav
