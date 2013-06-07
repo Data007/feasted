@@ -20,7 +20,7 @@
 .place_order
   = link_to place_order_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, id: @meal.id), method: :post, class: "tile icon bg-color-green" do
     .tile-content
-      %h1.icon-large.icon-check 
+      %h1.icon-large.icon-checkmark 
     .brand
       .name
         Place Order

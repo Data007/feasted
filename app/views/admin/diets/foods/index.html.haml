@@ -6,8 +6,7 @@
       .brand
         .name
         = food.name
-
-.diet_foods
+%div.diet_foods
   - @diet.foods.each do |food|      
     =link_to admin_diet_food_path(diet_id: @diet.id, id: food.id), method: :delete, class: "tile icon bg-color-green" do
       .tile-content
