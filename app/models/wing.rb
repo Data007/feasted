@@ -17,7 +17,11 @@ class Wing
 
   def update_rooms(new_amount_of_rooms)
     if rooms.count < new_amount_of_rooms
-      add_rooms(new_amount_of_rooms - rooms.count)
+      if rooms.count == 0
+        add_rooms(new_amount_of_rooms - rooms.count)
+      else
+        add_with_rooms(new_amount_of_rooms - rooms.count)
+      end
     elsif new_amount_of_rooms < rooms.count
       destroy_rooms(rooms.count - new_amount_of_rooms)
     end
@@ -27,7 +31,15 @@ class Wing
 
   def add_rooms(number_of_rooms_to_add)
     number_of_rooms_to_add.times do |index|
-      self.rooms.create(number: index + 1)
+      self.rooms.create(number:  index + 1)
+      self.save!
+    end
+  end
+
+  def add_with_rooms(number_of_rooms_to_add)
+    count = rooms.count + 1
+    number_of_rooms_to_add.times do |index|
+      self.rooms.create(number: count + index)
       self.save!
     end
   end
