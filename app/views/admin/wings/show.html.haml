@@ -20,9 +20,9 @@
       .name
         Room Management
 
-  .tile.icon.bg-color-redDark
-    .tile-content      
+  = link_to [:admin, @wing], method: :delete, class: "tile icon bg-color-redDark" do
+    .tile-content
       %h1.icon-large.icon-cancel-2
     .brand
       .name
-        = link_to 'Delete Wing', [:admin, @wing], method: :delete
+        Delete

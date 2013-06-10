@@ -1,18 +1,19 @@
 - @diets.each do |diet|      
-  .tile.icon.bg-color-green
+  =link_to admin_wing_room_patients_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, diet_id: diet.id), method: :post, class: "tile icon bg-color-green" do
     .tile-content
       %h1.icon-large.icon-clipboard
     .brand
       .name
-        =link_to diet.name, admin_wing_room_patients_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, diet_id: diet.id), method: :post
+        = diet.name
 
-.patient_diets
+
+%div.diet_foods
   - @patient.diets.each do |diet|      
-    .tile.icon.bg-color-green
+    = link_to admin_wing_room_patient_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, id: diet.id), method: :delete, class: "tile icon bg-color-green" do
       .tile-content
         %h1.icon-large.icon-clipboard
       .brand
         .name
-          = link_to diet.name, admin_wing_room_patient_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, id: diet.id), method: :delete
+          = diet.name
 
 

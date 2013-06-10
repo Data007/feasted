@@ -54,7 +54,7 @@ describe 'Wing Management' do
       click_link 'North'
       current_path.should == admin_wing_path(@wing)
 
-      click_link 'Delete Wing'
+      click_link 'Delete'
       current_path.should == admin_wings_path
 
       Wing.count.should == 0
@@ -79,7 +79,7 @@ describe 'Wing Management' do
       end
 
       it 'creates the amount of patients in a rooms' do
-        visit url_for([:edit, :admin, @wing, @room])
+        visit url_for([:update_patient_count, :admin, @wing, @room])
         click_link '2 Patients'
 
         @room.patients.count.should == 2
@@ -227,7 +227,7 @@ describe 'Wing Management' do
             @room.patients << FactoryGirl.create(:patient) 
             @room.reload
             @patient = @room.patients.first
-            visit url_for([:edit, :admin, @wing, @room])
+            visit url_for([:admin, @wing, @room])
           end
 
           it 'adds a diet to a patient' do
