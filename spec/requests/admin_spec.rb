@@ -8,9 +8,9 @@ describe 'Wing Management' do
   it 'creates wing' do
     Wing.count.should == 0
 
-    click_link 'Wing Management'
+    click_link 'Floor Management'
     current_path.should == admin_wings_path
-    click_link 'Add a Wing'
+    click_link 'Add a Floor'
     current_path.should == new_admin_wing_path
     fill_in 'Name', with: 'Saint Nicholas Wing'
     fill_in 'Amount of Rooms', with: 15
@@ -31,7 +31,7 @@ describe 'Wing Management' do
       @wing.update_attribute('amount_of_rooms', 10)
       @wing.reload
       @room = @wing.rooms.first
-      click_link 'Wing Management'
+      click_link 'Floor Management'
     end
 
     it 'edits a wing' do

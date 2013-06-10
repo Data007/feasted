@@ -1,8 +1,7 @@
 = form_for  [:admin, @wing] do |wing_form|
   %fieldset
-    %legend Wing Details
     .control-group
-      = wing_form.label :name, 'Wing Name'
+      = wing_form.label :name, 'Floor Name'
       .controls
         = wing_form.text_field :name
     .control-group
