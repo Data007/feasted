@@ -1,0 +1,21 @@
+.tiles
+  %a.tile.icon.bg-color-green{href: edit_admin_diet_path(@diet)}
+    .tile-content
+      %h1.icon-large.icon-pencil
+    .brand
+      .name
+        Edit Name
+
+  %a.tile.icon.bg-color-green{href: admin_diet_foods_path(@diet)}
+    .tile-content
+      %h1.icon-large.icon-apple
+    .brand
+      .name
+        Edit Food
+
+    = link_to [:admin, @diet], method: :delete, class: "tile icon bg-color-redDark" do
+      .tile-content
+        %h1.icon-large.icon-cancel-2
+      .brand
+        .name
+          Delete

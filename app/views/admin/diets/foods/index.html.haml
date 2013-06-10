@@ -2,15 +2,16 @@
   - @foods.each do |food|      
     = link_to admin_diet_foods_path(id: @diet.id, food_id: food.id), method: :post, class: "tile icon bg-color-green" do
       .tile-content
-        %h1.icon-large.icon-box 
+        %h1.icon-large.icon-apple 
       .brand
         .name
         = food.name
+
 %div.diet_foods
   - @diet.foods.each do |food|      
     =link_to admin_diet_food_path(diet_id: @diet.id, id: food.id), method: :delete, class: "tile icon bg-color-green" do
       .tile-content
-        %h1.icon-large.icon-box 
+        %h1.icon-large.icon-apple 
       .brand
         .name
         = food.name
