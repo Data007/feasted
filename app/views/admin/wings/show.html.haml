@@ -1,7 +1,28 @@
 .tiles
   %a.tile.icon.bg-color-green{href: edit_admin_wing_path(@wing)}
     .tile-content
-      %h1.icon-large.icon-plus-2
+      %h1.icon-large.icon-pencil
     .brand
       .name
         Edit Name
+
+  %a.tile.icon.bg-color-green{href: update_room_count_admin_wing_path(@wing)}
+    .tile-content
+      %h1.icon-large.icon-equalizer
+    .brand
+      .name
+        Number of Rooms
+
+  %a.tile.icon.bg-color-green{href: admin_wing_rooms_path(@wing)}
+    .tile-content
+      %h1.icon-large.icon-drawer-2
+    .brand
+      .name
+        Room Management
+
+  .tile.icon.bg-color-redDark
+    .tile-content      
+      %h1.icon-large.icon-cancel-2
+    .brand
+      .name
+        = link_to 'Delete Wing', [:admin, @wing], method: :delete

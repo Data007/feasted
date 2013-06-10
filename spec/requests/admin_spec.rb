@@ -52,12 +52,25 @@ describe 'Wing Management' do
       Wing.count.should == 1
 
       click_link 'North'
-      current_path.should == edit_admin_wing_path(@wing)
+      current_path.should == admin_wing_path(@wing)
 
       click_link 'Delete Wing'
       current_path.should == admin_wings_path
 
       Wing.count.should == 0
+    end
+
+    it 'updates the size of rooms in the wing' do
+      click_link 'North'
+      current_path.should == admin_wing_path(@wing)
+
+      click_link 'Number of Rooms'
+      current_path.should == update_room_count_admin_wing_path(@wing)
+      #-within '3' do
+        #-click_link 'Rooms'
+      #-end
+      #-@wing.reload
+      #-@wing.room.count.should == 10
     end
 
     context 'with a rooms' do

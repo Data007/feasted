@@ -12,11 +12,17 @@ class Admin::WingsController < AdminController
   end
 
   def update
-    @wing.update_attributes params[:wing]
-    if params[:wing][:amount_of_rooms]
-        @wing.update_rooms((params[:wing][:amount_of_rooms]).to_i)
+    if params[:amount_of_rooms]
+      @wing.update_rooms((params[:amount_of_rooms]).to_i)
+      redirect_to [:admin, @wing], flash: {notice: 'Your Wing has been updated'}
+      return
     end
-    redirect_to [:admin, :wings], flash: {notice: 'Your Wing has been updated'}
+    @wing.update_attributes params[:wing]
+    redirect_to [:admin, @wing], flash: {notice: 'Your Wing has been updated'}
+  end
+
+  def update_room_count
+
   end
 
   def destroy

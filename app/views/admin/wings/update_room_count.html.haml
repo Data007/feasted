@@ -1,0 +1,8 @@
+- 50.times do |i|
+  .tiles
+    .tile.icon.bg-color-green
+      .tile-content
+        %h1.number-large  #{i + 1}
+      .brand
+        .name
+          = link_to 'Rooms', admin_wing_path(wing_id: @wing.id, amount_of_rooms: i + 1), method: :put
