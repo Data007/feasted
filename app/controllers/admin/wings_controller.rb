@@ -8,7 +8,7 @@ class Admin::WingsController < AdminController
   def create
     @wing = Wing.create params[:wing]
     @wing.instantiate_rooms
-    redirect_to admin_wings_path
+    redirect_to admin_wing_path(@wing)
   end
 
   def update
@@ -26,6 +26,10 @@ class Admin::WingsController < AdminController
 
   def index
     @wings = Wing.all
+  end
+
+  def show
+
   end
 
 private
