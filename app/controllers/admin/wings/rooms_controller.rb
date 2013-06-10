@@ -8,7 +8,7 @@ class Admin::Wings::RoomsController < Admin::WingsController
 
   def update_patients
     @room.update_patients(params[:patient_count])
-    redirect_to [:edit, :admin, @wing, @room]
+    redirect_to [ :admin, @wing, @room]
   end
 private
   def find_room
