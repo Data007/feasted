@@ -85,7 +85,17 @@ describe 'Wing Management' do
         @room.patients.count.should == 2
         @room.patients.last.number.should == 2
       end
-    end
+
+      it 'changes the room number' do
+        visit url_for([:admin, @wing, @room])
+        click_link 'Edit Room Number'
+        current_url.should == url_for([:update_room_number, :admin, @wing, @room])
+        click_link '403'
+        #@room.reload
+        #@room.number.should == 403
+        #current_path.should == url_for([:admin, @wing, @room])
+      end
+   end
 
     context 'diet management' do
       before do
@@ -115,7 +125,7 @@ describe 'Wing Management' do
         it 'edits a diet' do
           click_link 'Diabetic'
 
-          current_path.should == edit_admin_diet_path(@diet)
+          current_path.should == show_admin_diet_path(@diet)
 
           fill_in 'Name', with: 'Light Salt Diabetic'
           click_button 'Save'  
