@@ -1,19 +1,19 @@
 .tiles
-  %a{:class => "tile icon bg-color-#{@patient.color("Breakfast")}", href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: "Breakfast")}
+  %a{:class => "tile icon bg-color-#{@patient.color("Breakfast")}", href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, kind: "Breakfast")}
     .tile-content
       %h1.icon-large.icon-coffee
     .brand
       .name
         Breakfast
 .tiles
-  %a{:class => "tile icon bg-color-#{@patient.color("Lunch")}", href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: "Lunch")}
+  %a{:class => "tile icon bg-color-#{@patient.color("Lunch")}", href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, kind: "Lunch")}
     .tile-content
       %h1.icon-large.icon-basket
     .brand
       .name
         Lunch
 .tiles
-  %a{:class => "tile icon bg-color-#{@patient.color("Supper")}", href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, type: "Supper")}
+  %a{:class => "tile icon bg-color-#{@patient.color("Supper")}", href: new_wing_room_patient_meal_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, kind: "Supper")}
     .tile-content
       %h1.icon-large.icon-moon
     .brand

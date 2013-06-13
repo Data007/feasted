@@ -10,9 +10,11 @@ class Patient
 
 
   def foods meal_object
+    @foods = []
     self.diets.each do |diet|
-      @foods = diet.foods.select {|food| food.kind == meal_object.kind}
+      @foods += diet.foods.select {|food| food.kind == meal_object.kind}
     end
+
 
     if @foods != nil
       return @foods
