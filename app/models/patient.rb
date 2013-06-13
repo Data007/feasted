@@ -25,7 +25,7 @@ class Patient
 
   def color meal_time
     meals = self.meals.select {|meal| meal.created_at.today?}
-    meals_kind = meals.select {|meal| meal.type == meal_time} 
+    meals_kind = meals.select {|meal| meal.kind == meal_time} 
     temp = meals_kind.select {|mealp| mealp.orders.present?}
     if temp.length >= 1
       return 'green'
