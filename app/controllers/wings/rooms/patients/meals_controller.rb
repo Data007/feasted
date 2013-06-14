@@ -46,7 +46,7 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
 
   def place_order
     orders = @meal.orders.select {|order| order.created_at.today?}
-    orders = orders.select {|order| order.type == @meal.type }
+    orders = orders.select {|order| order.kind == @meal.kind }
     unless orders.length >= 1 
       if @meal.foods.count <= 0 
         redirect_to [:edit, @wing, @room, @patient, @meal], flash: {error: "Please Add food to the Order!"}
@@ -54,6 +54,12 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
       end
 
       order = @meal.create_order(@meal)
+
+      if orders_all_placed_for_today
+        redirect_to [@wing, @room, :patients]
+        return
+      end
+
       redirect_to [@wing, @room, @patient, :meals], flash: {notice: "Your Order for #{@meal.kind} has been placed"}
       return
     end
@@ -70,5 +76,15 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
   def find_food
     food_id = params[:food_id]
     @food = Food.find(food_id)
+  end
+
+  def orders_all_placed_for_today
+    number_of_meals = []
+    number_of_meals = @patient.meals.select {|meal| meal.created_at.today?}
+    if number_of_meals.count >= 3
+      return true
+    else
+      return false
+    end
   end
 end

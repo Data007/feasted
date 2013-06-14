@@ -5,6 +5,6 @@ class Order
   field :kind
 
   has_one :patient
-  has_one :meal
+  has_and_belongs_to_many :meal
   has_and_belongs_to_many :foods
 end
