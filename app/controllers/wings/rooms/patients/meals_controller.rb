@@ -9,6 +9,7 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
   def new
     orders = Order.all.select {|order| order.created_at.today?}
     orders = orders.select {|order| order.kind == params[:kind]}
+    orders = orders.select {|order| order.patient_id == @patient.id}
     order = orders.first
 
     unless orders.empty?
@@ -53,10 +54,10 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
       end
 
       order = @meal.create_order(@meal)
-      redirect_to [:edit, @wing, @room, @patient, @meal, order], flash: {notice: "Your Order has been placed"}
+      redirect_to [@wing, @room, @patient, :meals], flash: {notice: "Your Order for #{@meal.kind} has been placed"}
       return
     end
-    redirect_to [:edit, @wing,@room, @patient, @meal, @meal.orders.first ], flash: {notice: "Your Order has already been placed! You are now Editing that Order!"}
+    redirect_to [:edit, @wing,@room, @patient, @meal], flash: {notice: "Your Order has already been placed! You are now Editing that Order!"}
   end
   
   private
