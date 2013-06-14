@@ -7,8 +7,22 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
   end
 
   def new
-    @meal = Meal.create(params)
-    redirect_to edit_wing_room_patient_meal_path(@wing, @room, @patient, @meal) 
+    orders = Order.all.select {|order| order.created_at.today?}
+    orders = orders.select {|order| order.kind == params[:kind]}
+    order = orders.first
+
+    unless orders.empty?
+      meals = Meal.all.select {|meal| meal.id == order.meal_id}
+      meal = meals.first
+    end
+
+    if orders.length >= 1
+      redirect_to [:edit, @wing, @room, @patient, meal, order]
+    else
+
+      @meal = Meal.create(params)
+      redirect_to edit_wing_room_patient_meal_path(@wing, @room, @patient, @meal) 
+    end
   end
 
   def edit
