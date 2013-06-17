@@ -55,7 +55,12 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
 
       order = @meal.create_order(@meal)
 
-      if orders_all_placed_for_today
+      if patients_all_placed_for_today
+        redirect_to [@wing, :rooms]
+        return
+      end
+
+      if orders_all_placed_for_today(@patient)
         redirect_to [@wing, @room, :patients]
         return
       end
@@ -78,13 +83,26 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
     @food = Food.find(food_id)
   end
 
-  def orders_all_placed_for_today
+  def orders_all_placed_for_today patient
     number_of_meals = []
-    number_of_meals = @patient.meals.select {|meal| meal.created_at.today?}
+    number_of_meals = patient.meals.select {|meal| meal.created_at.today?}
     if number_of_meals.count >= 3
       return true
     else
       return false
+    end
+  end
+
+  def patients_all_placed_for_today
+    patients_orders_placed = []
+    @room.patients.each do |patient|
+      patients_orders_placed << orders_all_placed_for_today(patient)
+    end
+
+    if patients_orders_placed.include?(false)
+      return false
+    else 
+      return true
     end
   end
 end
