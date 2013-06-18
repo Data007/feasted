@@ -5,5 +5,5 @@ class Diet
   field :name
 
   has_many :foods
-  belongs_to :patient
+  has_and_belongs_to_many :patient
 end
