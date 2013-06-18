@@ -55,7 +55,12 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
 
       order = @meal.create_order(@meal)
 
-      if patients_all_placed_for_today
+      if rooms_all_placed_for_today
+        redirect_to [:wings]
+        return
+      end
+
+      if patients_all_placed_for_today(@room)
         redirect_to [@wing, :rooms]
         return
       end
@@ -93,15 +98,28 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
     end
   end
 
-  def patients_all_placed_for_today
+  def patients_all_placed_for_today room
     patients_orders_placed = []
-    @room.patients.each do |patient|
+    room.patients.each do |patient|
       patients_orders_placed << orders_all_placed_for_today(patient)
     end
 
     if patients_orders_placed.include?(false)
       return false
     else 
+      return true
+    end
+  end
+
+  def rooms_all_placed_for_today
+    rooms_orders_placed = []
+    @wing.rooms.each do |room|
+      rooms_orders_placed << patients_all_placed_for_today(room)
+    end
+
+    if rooms_orders_placed.include?(false)
+      return false
+    else
       return true
     end
   end
