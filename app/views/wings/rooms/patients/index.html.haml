@@ -5,4 +5,7 @@
         %h1.icon-large.icon-user
       .brand
         .name
-          = patient.number
+          - if patient.name.present?
+            = patient.name
+          - else
+            = patient.number.to_s

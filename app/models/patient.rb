@@ -3,6 +3,7 @@ class Patient
   include Mongoid::Timestamps
 
   field :number
+  field :name
 
   belongs_to :room
   has_and_belongs_to_many :diets

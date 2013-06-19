@@ -9,7 +9,12 @@ Feasted::Application.routes.draw do
           get :update_patient_count
           get :update_room_number
         end
-        resources :patients, controller: 'wings/rooms/patients'
+        resources :patients, controller: 'wings/rooms/patients' do
+          member do
+            get :select_option_for_patient
+            get :edit_patient_name
+          end
+        end
         member do
           get :update_patients
         end

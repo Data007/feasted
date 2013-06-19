@@ -24,6 +24,18 @@ class Admin::Wings::Rooms::PatientsController < Admin::Wings::RoomsController
     redirect_to edit_admin_wing_room_patient_path(@wing, @room, @patient)
   end
 
+  def select_option_for_patient
+    
+  end
+
+  def edit_patient_name
+  end
+
+  def update
+    @patient.update_attributes params[:patient]
+    redirect_to [:admin, @wing, @room, @patient]
+  end
+
 private
   def find_patient
     patient_id = params[:patient_id].present? ? params[:patient_id] : params[:id]
