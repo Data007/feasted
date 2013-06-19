@@ -12,6 +12,10 @@ class Wings::Rooms::PatientsController < Wings::RoomsController
   def destroy
   end
 
+  def select_option_for_patients
+    @kind = params[:id]
+  end
+
 private
   def find_patient
     patient_id = params[:patient_id].present? ? params[:patient_id] : params[:id]
