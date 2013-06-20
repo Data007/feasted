@@ -22,7 +22,7 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
     else
 
       @meal = Meal.create(params)
-      redirect_to edit_wing_room_patient_meal_path(@wing, @room, @patient, @meal) 
+      redirect_to select_option_for_patients_wing_room_patient_meal_path(wing_id: @wing, room_id: @room, patient_id: @patient, id: @meal) 
     end
   end
 
@@ -74,6 +74,10 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
       return
     end
     redirect_to [:edit, @wing,@room, @patient, @meal], flash: {notice: "Your Order has already been placed! You are now Editing that Order!"}
+  end
+
+  def select_option_for_patients
+  
   end
   
   private

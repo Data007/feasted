@@ -30,13 +30,10 @@ Feasted::Application.routes.draw do
   resources :wings do
     resources :rooms, controller: 'wings/rooms' do
       resources :patients, controller: 'wings/rooms/patients' do
-
-        member do
-          get :select_option_for_patients
-        end
         
         resources :meals, controller: 'wings/rooms/patients/meals' do
           member do
+            get :select_option_for_patients
             post :place_order
           end
           resources :orders, controller: 'wings/rooms/patients/meals/orders' do
