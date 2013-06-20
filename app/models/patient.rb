@@ -8,6 +8,7 @@ class Patient
   belongs_to :room
   has_and_belongs_to_many :diets
   has_many :meals
+  has_many :orders
 
 
   def foods meal_object

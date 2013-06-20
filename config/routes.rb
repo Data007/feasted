@@ -39,6 +39,7 @@ Feasted::Application.routes.draw do
           resources :orders, controller: 'wings/rooms/patients/meals/orders' do
             member do
               post :edit_order
+              get :place_order
             end
           end
         end

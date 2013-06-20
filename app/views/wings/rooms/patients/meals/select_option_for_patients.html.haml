@@ -6,7 +6,7 @@
       .name
         Patient Meal
 
-  %a{:class => "tile icon bg-color-#{@patient.color(@kind)}"}
+  %a{:class => "tile icon bg-color-#{@patient.color(@kind)}", href: new_wing_room_patient_meal_order_path(@wing, @room, @patient, @meal)}
     .tile-content
       %h1.icon-large.icon-basket
     .brand

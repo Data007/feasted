@@ -1,5 +1,5 @@
 class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::MealsController
-  before_filter :find_order, except: [:index]
+  before_filter :find_order, except: [:index, :new]
   before_filter :find_patient
   before_filter :find_meal
 
@@ -7,9 +7,14 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
 
   end
 
+  def new
+    @order = Order.create(kind: @meal.kind, family_member: true, patient_id: @patient.id)
+    redirect_to edit_wing_room_patient_meal_order_path(@wing, @room, @patient, @meal, @order)
+  end
+
   def edit
-    @edible_foods = @patient.foods(@meal)
-    @foods = @order.foods
+    @foods = Food.all
+    @destroy_foods = @order.foods
   end
 
   def edit_order
@@ -22,6 +27,15 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
     @food = find_food
     @order.foods = @order.foods.delete_if {|food| food == @food}
     redirect_to [:edit, @wing, @room, @patient, @meal, @order] 
+  end
+
+  def place_order
+    @order.update_attribute(:completed, true)
+    @order.update_attribute(:meal_id, @meal.id)
+    @order.update_attribute(:patient_id, @patient.id)
+    @order.meal_ids << @meal.id
+    @order.save
+    redirect_to [@wing, @room, @patient, :meals], flash: {notice: "Your Order for #{@meal.kind} has been placed"}
   end
 
   private
