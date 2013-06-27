@@ -1,0 +1,21 @@
+.tiles
+  %a.tile.icon.bg-color-green{href: edit_admin_menu_path(@menu)}
+    .tile-content
+      %h1.icon-large.icon-pencil
+    .brand
+      .name
+        Edit Name
+
+  %a.tile.icon.bg-color-green{}
+    .tile-content
+      %h1.icon-large.icon-pencil
+    .brand
+      .name
+        Foods
+
+  = link_to [:admin, @menu], method: :delete, class: "tile icon bg-color-redDark" do
+    .tile-content
+      %h1.icon-large.icon-cancel-2
+    .brand
+      .name
+        Delete

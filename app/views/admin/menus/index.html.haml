@@ -1,16 +1,16 @@
-- %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday).each do |day|
+.tiles
+  %a.tile.icon.bg-color-green{href: new_admin_menu_path}
+    .tile-content
+      %h1.icon-large.icon-plus-2
+    .brand
+      .name
+        Add a Menu
+
+- @menus.each do |menu|      
   .tiles
-    %a{:class => "tile icon bg-color-green"}
+    %a.tile.icon.bg-color-green{href: admin_menu_path(menu)}
       .tile-content
         %h1.icon-large.icon-home
       .brand
         .name
-          = day
-
-.tiles
-  %a{:class => "tile icon bg-color-green"}
-    .tile-content
-      %h1.icon-large.icon-home
-    .brand
-      .name
-        Reset
+          = menu.name
