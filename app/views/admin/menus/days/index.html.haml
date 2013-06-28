@@ -1,1 +1,8 @@
-%h1 Hello World
+- %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday).each do |day|
+  .tiles
+    %a{:class => "tile icon bg-color-green", href: new_admin_menu_day_path(menu_id: @menu.id, id: "#{day}")}
+      .tile-content
+        %h1.icon-large.icon-coffee
+      .brand
+        .name
+          = day

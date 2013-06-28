@@ -2,6 +2,7 @@ class Admin::MenusController < AdminController
   before_filter :find_menu, except: [:new, :create, :index]
 
   def index
+    binding.pry
     @menus = Menu.all
   end
 
