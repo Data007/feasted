@@ -5,6 +5,7 @@ class Meal
   field :kind
 
   belongs_to :patient
+  belongs_to :day
   has_and_belongs_to_many :orders
   has_and_belongs_to_many :foods
 

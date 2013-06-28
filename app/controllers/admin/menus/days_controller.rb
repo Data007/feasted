@@ -27,4 +27,9 @@ private
     end
   end
 
+  def find_day_for_today
+    day_id = params[:day_id].present? ? params[:day_id] : params[:id]
+    @day = Day.find(day_id)
+  end
+
 end
