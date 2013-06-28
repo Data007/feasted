@@ -1,1 +1,17 @@
-%h1 hello world
+.tiles
+  - @foods.each do |food|      
+    = link_to admin_menu_day_meal_foods_path(menu_id: @menu.id, day_id: @day.id, meal_id: @meal.id,  food_id: food.id), method: :post, class: "tile icon bg-color-green" do
+      .tile-content
+        %h1.icon-large.icon-apple 
+      .brand
+        .name
+        = food.name
+
+%div.diet_foods
+  - @added_foods.each do |food|      
+    =link_to admin_menu_day_meal_food_path(menu_id: @menu.id, day_id: @day.id, meal_id: @meal.id, id: food.id), method: :delete, class: "tile icon bg-color-green" do
+      .tile-content
+        %h1.icon-large.icon-apple 
+      .brand
+        .name
+        = food.name
