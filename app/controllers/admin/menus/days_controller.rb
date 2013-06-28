@@ -7,7 +7,6 @@ class Admin::Menus::DaysController < Admin::MenusController
       binding.pry
       redirect_to [:admin, @menu, @day]
     else
-      binding.pry
       @day = Day.create(day: params[:id], menu_id: params[:menu_id])
       @menu.days << @day
       redirect_to admin_menu_day_meals_path(@menu, @day)
