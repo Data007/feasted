@@ -6,12 +6,12 @@
       .name
         Edit Name
 
-  %a.tile.icon.bg-color-green{}
+  %a.tile.icon.bg-color-green{href: admin_menu_days_path(@menu)}
     .tile-content
       %h1.icon-large.icon-pencil
     .brand
       .name
-        Foods
+        Add Food
 
   = link_to [:admin, @menu], method: :delete, class: "tile icon bg-color-redDark" do
     .tile-content

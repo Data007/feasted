@@ -1,6 +1,12 @@
 Feasted::Application.routes.draw do
   namespace :admin do
-    resources :menus 
+    resources :menus do
+      resources :days, controller: 'menus/days' do
+        resources :meals, controller: 'menus/days/meals' do
+          resources :foods, controller: 'menus/days/meals/foods'
+        end
+      end
+    end 
     resources :wings do
       member do
         get :update_room_count
