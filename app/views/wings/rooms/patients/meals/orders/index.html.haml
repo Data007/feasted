@@ -1,1 +1,16 @@
-hurray!
+.tiles
+  %a{:class => "tile icon bg-color-#{@patient.color(@kind)}", href: new_wing_room_patient_meal_order_path(wing_id: @wing, room_id: @room, patient_id: @patient, meal_id: @meal, family_member: true)}
+    .tile-content
+      %h1.icon-large.icon-basket
+    .brand
+      .name
+        Add Family Meal
+
+- @orders.each do |order|      
+  .tiles
+    %a{:class => "tile icon bg-color-green", href: edit_wing_room_patient_meal_order_path(@wing, @room, @patient, @meal, order)}
+      .tile-content
+        %h1.icon-large.icon-home
+      .brand
+        .name
+          Order

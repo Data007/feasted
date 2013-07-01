@@ -4,11 +4,13 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
   before_filter :find_meal
 
   def index
-
+    @orders = []
+    @orders = @patient.orders.select {|order| order.family_member}
+    @orders = @orders.select {|order| order.created_at.today?}
+    @orders = @orders.select {|order| order.kind == @meal.kind}
   end
 
   def new
-    binding.pry
     @orders = []
     @orders = @patient.orders.select {|order| order.completed?}
     @orders = @orders.select {|order| order.kind == @meal.kind}
