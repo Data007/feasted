@@ -7,7 +7,7 @@ class Admin::Menus::Days::Meals::FoodsController < Admin::Menus::Days::MealsCont
   end
 
   def create
-    @food = Food.find(params[:food_id])
+    @food = Food.find(params[:id])
     @meal.foods << @food
     @meal.save!
     redirect_to admin_menu_day_meal_foods_path(@menu, @day, @meal)
@@ -17,5 +17,12 @@ class Admin::Menus::Days::Meals::FoodsController < Admin::Menus::Days::MealsCont
     @delete_food = Food.find(params[:id])
     @meal.foods = @meal.foods.reject {|food| food == @delete_food}
     redirect_to admin_menu_day_meal_foods_path(@menu, @day, @meal)
+  end
+  
+private
+  def find_meal
+    meal_id = params[:meal_id].present? ? params[:meal_id] : params[:id]
+    @meal = Meal.find(meal_id)
+
   end
 end

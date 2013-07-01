@@ -5,6 +5,11 @@ class Admin::Menus::Days::MealsController < Admin::Menus::DaysController
   end
 
   def new
+    @meal = find_meal
+    if @meal
+      redirect_to admin_menu_day_meal_foods_path(@menu, @day, @meal)
+      return
+    end
     @meal = Meal.create(kind: params[:id])
     @day.meals << @meal
     redirect_to admin_menu_day_meal_foods_path(@menu, @day, @meal)
@@ -15,5 +20,11 @@ private
     meal_id = params[:meal_id].present? ? params[:meal_id] : params[:id]
     @meal = Meal.find(meal_id)
 
+  end
+
+  def find_meal
+    @meals = @day.meals.select {|meal| meal.kind == "Breakfast"}
+    @meals = @meals.select {|meal| meal.created_at.today?}
+    return @meals.first
   end
 end

@@ -4,8 +4,9 @@ class Admin::Menus::DaysController < Admin::MenusController
 
   def new
     if find_day(params[:id])
-      binding.pry
-      redirect_to [:admin, @menu, @day]
+      @day = find_day(params[:id])
+      redirect_to [:admin, @menu, @day, :meals]
+      return
     else
       @day = Day.create(day: params[:id], menu_id: params[:menu_id])
       @menu.days << @day
@@ -21,9 +22,9 @@ private
     menu_days = []
     menu_days = @menu.days.select {|dayofg| dayofg.day == params_day}
     if menu_days.count >= 1
-      return false
-    else
       return menu_days.first
+    else
+      return false
     end
   end
 
