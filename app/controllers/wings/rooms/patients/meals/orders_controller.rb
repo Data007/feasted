@@ -48,7 +48,28 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
     @order.update_attribute(:patient_id, @patient.id)
     @order.meal_ids << @meal.id
     @order.save
-    redirect_to [@wing, @room, @patient, :meals], flash: {notice: "Your Order for #{@meal.kind} has been placed"}
+
+    if rooms_all_placed_for_today
+      redirect_to [:wings]
+      return
+    end
+
+    if patients_all_placed_for_today(@room)
+      redirect_to [@wing, :rooms]
+      return
+    end
+
+    if orders_all_placed_for_today(@patient)
+      redirect_to [@wing, @room, :patients]
+      return
+    end
+    
+    if params[:family_member]
+      redirect_to select_option_for_patients_wing_room_patient_meal_path(@wing, @room, @patient, @meal), flash: {notice: "Your Order for #{@meal.kind} has been placed"}
+      return
+    end
+
+    redirect_to wing_room_patient_meals_path(@wing, @room, @patient)
   end
 
   private
@@ -61,5 +82,16 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
   def find_food
     food_id = params[:food_id]
     @food = Food.find(food_id)
+  end
+
+  def orders_all_placed_for_today patient
+    number_of_orders = []
+    number_of_orders = patient.orders.select {|order| order.created_at.today?}
+    number_of_orders = number_of_orders.select {|order| order.completed}
+    if number_of_orders.count >= 3
+      return true
+    else
+      return false
+    end
   end
 end
