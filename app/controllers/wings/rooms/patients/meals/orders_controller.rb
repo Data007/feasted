@@ -8,9 +8,18 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
   end
 
   def new
-    @order = Order.create(params)
-    @order.update_attribute(:kind, @meal.kind)
-    redirect_to edit_wing_room_patient_meal_order_path(@wing, @room, @patient, @meal, @order)
+    @orders = []
+    @orders = @patient.orders.select {|order| order.completed?}
+    @orders = @orders.select {|order| order.kind == @meal.kind}
+    @orders = @orders.select {|order| order.created_at.today?}
+    if @orders.count >= 1
+      redirect_to edit_wing_room_patient_meal_order_path(@wing, @room, @patient, @meal, @orders.first)
+      
+    else
+      @order = Order.create(params)
+      @order.update_attribute(:kind, @meal.kind)
+      redirect_to edit_wing_room_patient_meal_order_path(@wing, @room, @patient, @meal, @order)
+    end
   end
 
   def edit
