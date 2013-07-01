@@ -8,6 +8,7 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
 
   def new
     @meal = Meal.create(params)
+    @meal.update_attribute(:kind, params[:id])
     redirect_to select_option_for_patients_wing_room_patient_meal_path(wing_id: @wing, room_id: @room, patient_id: @patient, id: @meal) 
   end
 

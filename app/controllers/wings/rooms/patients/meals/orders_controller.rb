@@ -8,7 +8,8 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
   end
 
   def new
-    @order = Order.create(kind: @meal.kind, patient_id: @patient.id)
+    @order = Order.create(params)
+    @order.update_attribute(:kind, @meal.kind)
     redirect_to edit_wing_room_patient_meal_order_path(@wing, @room, @patient, @meal, @order)
   end
 
