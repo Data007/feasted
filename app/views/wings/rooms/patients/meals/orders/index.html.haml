@@ -1,7 +1,7 @@
 .tiles
-  %a{:class => "tile icon bg-color-#{@patient.color(@kind)}", href: new_wing_room_patient_meal_order_path(wing_id: @wing, room_id: @room, patient_id: @patient, meal_id: @meal, family_member: true)}
+  %a{:class => "tile icon bg-color-green", href: new_wing_room_patient_meal_order_path(wing_id: @wing, room_id: @room, patient_id: @patient, meal_id: @meal, family_member: true)}
     .tile-content
-      %h1.icon-large.icon-basket
+      %h1.icon-large.icon-plus-2
     .brand
       .name
         Add Family Meal
