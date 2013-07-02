@@ -26,7 +26,13 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
   end
 
   def edit
-    @foods = Food.all
+    @menu = find_this_weeks_menu()
+    days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)
+    day = days[(Date.today.day) - 1 ]
+    @menu_foods = @menu.find_foods_for_day_and_meal(day, @order.kind)
+
+    @foods = @patient.menu_foods_with_diets(@menu_foods)
+
     @destroy_foods = @order.foods
   end
 
@@ -92,6 +98,19 @@ class Wings::Rooms::Patients::Meals::OrdersController < Wings::Rooms::Patients::
       return true
     else
       return false
+    end
+  end
+
+  def find_this_weeks_menu
+    Menu.all.each do |menu|
+      month = menu.date.slice(0,2).to_i
+      day = menu.date.slice(3,2).to_i
+      year = menu.date.slice(6,4).to_i
+      date = Date.new(year, month, day)
+
+      if date.cweek == Date.today.cweek
+        return menu
+      end
     end
   end
 end

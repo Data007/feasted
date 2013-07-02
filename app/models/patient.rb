@@ -25,6 +25,21 @@ class Patient
     end
   end
 
+  def menu_foods_with_diets menu_foods
+    @foods = []
+    self.diets.each do |diet|
+      diet_foods = diet.foods
+      diet_foods.each do |food|
+        menu_foods.each do |menu_food|
+          if food == menu_food
+            @foods << food
+          end
+        end
+      end
+    end
+    return @foods
+  end
+
   def color meal_time
     meals = self.meals.select {|meal| meal.created_at.today?}
     meals_kind = meals.select {|meal| meal.kind == meal_time} 
