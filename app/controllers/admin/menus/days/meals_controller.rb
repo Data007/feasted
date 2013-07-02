@@ -23,7 +23,7 @@ private
   end
 
   def find_meal
-    @meals = @day.meals.select {|meal| meal.kind == "Breakfast"}
+    @meals = @day.meals.select {|meal| meal.kind == params[:id]}
     @meals = @meals.select {|meal| meal.created_at.today?}
     return @meals.first
   end
