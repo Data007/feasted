@@ -1,8 +1,0 @@
-.tiles
-  - 500.times do |room_number|
-    = link_to admin_wing_room_path(wing_id: @wing.id, room_id: @room.id, number: room_number + 1), method: :put, class: "tile icon bg-color-green" do
-      .tile-content
-        %h1.number-large #{room_number + 1}
-      .brand
-        .name
-          Room Number

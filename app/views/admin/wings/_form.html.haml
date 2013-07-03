@@ -1,8 +1,0 @@
-= form_for  [:admin, @wing] do |wing_form|
-  %fieldset
-    .control-group
-      = wing_form.label :name, 'Floor Name'
-      .controls
-        = wing_form.text_field :name
-    .form-actions
-      = wing_form.submit 'Save'
