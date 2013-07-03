@@ -29,15 +29,15 @@ Feasted::Application.routes.draw do
     resources :orders
   end
 
-  resources :rooms, controller: 'wings/rooms' do
-    resources :patients, controller: 'wings/rooms/patients' do
+  resources :rooms do
+    resources :patients, controller: 'rooms/patients' do
         
-      resources :meals, controller: 'wings/rooms/patients/meals' do
+      resources :meals, controller: 'rooms/patients/meals' do
         member do
           get :select_option_for_patients
           post :place_order
         end
-        resources :orders, controller: 'wings/rooms/patients/meals/orders' do
+        resources :orders, controller: 'rooms/patients/meals/orders' do
           member do
             post :edit_order
             get :place_order
@@ -49,5 +49,5 @@ Feasted::Application.routes.draw do
 
   match '/admin' => 'admin#index'
 
-  root to: 'wings#index'
+  root to: 'rooms#index'
 end
