@@ -9,6 +9,7 @@ class Patient
   has_and_belongs_to_many :diets
   has_many :meals
   has_many :orders
+  has_many :completed
 
 
   def foods meal_object
@@ -41,6 +42,12 @@ class Patient
   end
 
   def color meal_time
+    completed_for_today = completed.select {|complete| complete.created_at.today?}
+
+    if completed_for_today.length >=1
+      return 'green'
+    end
+
     meals = self.meals.select {|meal| meal.created_at.today?}
     meals_kind = meals.select {|meal| meal.kind == meal_time} 
     temp = meals_kind.select {|mealp| mealp.orders.present?}

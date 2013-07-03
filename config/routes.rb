@@ -31,6 +31,7 @@ Feasted::Application.routes.draw do
 
   resources :rooms do
     resources :patients, controller: 'rooms/patients' do
+      resources :completed, controller: 'rooms/patients/completed'
         
       resources :meals, controller: 'rooms/patients/meals' do
         member do

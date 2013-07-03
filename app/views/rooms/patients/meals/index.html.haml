@@ -20,3 +20,9 @@
       .name
         Supper
   
+  %a{:class => "tile icon bg-color-green", href: new_room_patient_completed_path( room_id: @room.id, patient_id: @patient.id)}
+    .tile-content
+      %h1.icon-large.icon-checkmark
+    .brand
+      .name
+        Mark as Completed
