@@ -1,9 +1,8 @@
-class Admin::Wings::RoomsController < Admin::WingsController
-  before_filter :find_wing
+class Admin::RoomsController < AdminController
   before_filter :find_room, except: [:index]
   
   def index
-    @rooms = @wing.rooms
+    @rooms = Room.all
   end
 
   def update_patients

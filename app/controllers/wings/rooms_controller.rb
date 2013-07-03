@@ -1,9 +1,8 @@
-class Wings::RoomsController < WingsController
-  before_filter :find_wing
+class RoomsController < AdminController
   before_filter :find_room, except: [:index]
 
   def index
-    @rooms = @wing.rooms
+    @rooms = Rooms.all
   end
 
 private
