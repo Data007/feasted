@@ -72,31 +72,4 @@ class Rooms::Patients::MealsController < Rooms::PatientsController
     food_id = params[:food_id]
     @food = Food.find(food_id)
   end
-
-
-  def patients_all_placed_for_today room
-    patients_orders_placed = []
-    room.patients.each do |patient|
-      patients_orders_placed << orders_all_placed_for_today(patient)
-    end
-
-    if patients_orders_placed.include?(false)
-      return false
-    else 
-      return true
-    end
-  end
-
-  def rooms_all_placed_for_today
-    rooms_orders_placed = []
-    Room.all.each do |room|
-      rooms_orders_placed << patients_all_placed_for_today(room)
-    end
-
-    if rooms_orders_placed.include?(false)
-      return false
-    else
-      return true
-    end
-  end
 end

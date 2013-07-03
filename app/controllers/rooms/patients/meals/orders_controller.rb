@@ -90,17 +90,6 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
     @food = Food.find(food_id)
   end
 
-  def orders_all_placed_for_today patient
-    number_of_orders = []
-    number_of_orders = patient.orders.select {|order| order.created_at.today?}
-    number_of_orders = number_of_orders.select {|order| order.completed}
-    if number_of_orders.count >= 3
-      return true
-    else
-      return false
-    end
-  end
-
   def find_this_weeks_menu
     Menu.all.each do |menu|
       month = menu.date.slice(0,2).to_i
