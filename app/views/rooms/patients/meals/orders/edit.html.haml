@@ -16,7 +16,7 @@
 
   %div.diet_foods
     - @destroy_foods.each do |food|
-      = link_to room_patient_meal_orders_path( room_id: @room.id, patient_id: @patient.id, meal_id: @meal.id, id: @order.id, food_id: food.id), method: :post, class: "tile icon bg-color-green" do
+      = link_to room_patient_meal_order_path( room_id: @room.id, patient_id: @patient.id, id: @meal.id, order_id: @order.id, food_id: food.id), method: :delete, class: "tile icon bg-color-green" do
         .tile-content
           %h1.icon-large.icon-box
         .brand
