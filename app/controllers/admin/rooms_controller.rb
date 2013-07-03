@@ -1,5 +1,5 @@
 class Admin::RoomsController < AdminController
-  before_filter :find_room, except: [:index]
+  before_filter :find_room, except: [:index, :new, :create]
   
   def index
     @rooms = Room.all
@@ -13,9 +13,23 @@ class Admin::RoomsController < AdminController
   def update_room_number
   end
 
+  def new
+    @room = Room.new
+  end
+
+  def create
+    @room = Room.create(params)
+    redirect_to [:admin, :rooms]
+  end
+
   def update
     @room.update_attribute(:number, params[:number])
     redirect_to [:admin, @wing, @room], flash: {notice: "Your Room Number has been Updated"}
+  end
+
+  def destroy
+    @room.destroy
+    redirect_to [:admin, :rooms]
   end
 private
   def find_room

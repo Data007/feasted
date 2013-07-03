@@ -1,0 +1,9 @@
+= form_for  [:admin, @room] do |room_form|
+  %fieldset
+    %legend Diet Details
+    .control-group
+      = room_form.label :number, 'Room Number'
+      .controls
+        = room_form.text_field :number
+    .form-actions
+      = room_form.submit 'Save'

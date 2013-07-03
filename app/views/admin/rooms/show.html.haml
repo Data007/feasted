@@ -18,3 +18,11 @@
   .brand
     .name
       Number of Patients
+
+=link_to admin_room_path(id: @room.id), method: :delete, class: "tile icon bg-color-redDark" do
+  .tile-content
+    %h1.icon-large.icon-cancel-2 
+  .brand
+    .name
+      Delete Room
+
