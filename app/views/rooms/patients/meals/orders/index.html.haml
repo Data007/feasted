@@ -1,5 +1,5 @@
 .tiles
-  %a{:class => "tile icon bg-color-green", href: new_wing_room_patient_meal_order_path(wing_id: @wing, room_id: @room, patient_id: @patient, meal_id: @meal, family_member: true)}
+  %a{:class => "tile icon bg-color-green", href: new_room_patient_meal_order_path(room_id: @room, patient_id: @patient, meal_id: @meal, family_member: true)}
     .tile-content
       %h1.icon-large.icon-plus-2
     .brand
@@ -8,7 +8,7 @@
 
 - @orders.each do |order|      
   .tiles
-    %a{:class => "tile icon bg-color-green", href: edit_wing_room_patient_meal_order_path(@wing, @room, @patient, @meal, order)}
+    %a{:class => "tile icon bg-color-green", href: edit_room_patient_meal_order_path(@room, @patient, @meal, order)}
       .tile-content
         %h1.icon-large.icon-home
       .brand

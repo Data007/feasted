@@ -1,4 +1,4 @@
-class Wings::Rooms::PatientsController < Wings::RoomsController
+class Rooms::PatientsController < RoomsController
   before_filter :find_room
   before_filter :find_patient, except: [:index]
 

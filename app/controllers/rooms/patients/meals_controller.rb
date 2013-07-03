@@ -1,4 +1,4 @@
-class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
+class Rooms::Patients::MealsController < Rooms::PatientsController
   before_filter :find_patient
   before_filter :find_meal, except: [:new, :index]
 
@@ -9,7 +9,7 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
   def new
     @meal = Meal.create(params)
     @meal.update_attribute(:kind, params[:id])
-    redirect_to select_option_for_patients_wing_room_patient_meal_path(wing_id: @wing, room_id: @room, patient_id: @patient, id: @meal) 
+    redirect_to select_option_for_patients_room_patient_meal_path(room_id: @room, patient_id: @patient, id: @meal) 
   end
 
   def edit
@@ -20,14 +20,14 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
     @food = Food.find(params[:food_id])
     @meal.foods << @food
     @meal.save!
-    redirect_to [:edit, @wing, @room, @patient, @meal]
+    redirect_to [:edit, @room, @patient, @meal]
   end
 
   def destroy
     @food = find_food
     @meal.foods = @meal.foods.reject {|food| food == @food}
     @meal.save!
-    redirect_to [:edit, @wing, @room, @patient, @meal] 
+    redirect_to [:edit, @room, @patient, @meal] 
   end
 
   def place_order
@@ -35,28 +35,23 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
     orders = orders.select {|order| order.kind == @meal.kind }
     unless orders.length >= 1 
       if @meal.foods.count <= 0 
-        redirect_to [:edit, @wing, @room, @patient, @meal], flash: {error: "Please Add food to the Order!"}
+        redirect_to [:edit, @room, @patient, @meal], flash: {error: "Please Add food to the Order!"}
         return
       end
 
       order = @meal.create_order(@meal)
 
-      if rooms_all_placed_for_today
-        redirect_to [:wings]
-        return
-      end
-
       if patients_all_placed_for_today(@room)
-        redirect_to [@wing, :rooms]
+        redirect_to [:rooms]
         return
       end
 
       if orders_all_placed_for_today(@patient)
-        redirect_to [@wing, @room, :patients]
+        redirect_to [ @room, :patients]
         return
       end
 
-      redirect_to [@wing, @room, @patient, :meals], flash: {notice: "Your Order for #{@meal.kind} has been placed"}
+      redirect_to [ @room, @patient, :meals], flash: {notice: "Your Order for #{@meal.kind} has been placed"}
       return
     end
     redirect_to [:edit, @wing,@room, @patient, @meal], flash: {notice: "Your Order has already been placed! You are now Editing that Order!"}
@@ -94,7 +89,7 @@ class Wings::Rooms::Patients::MealsController < Wings::Rooms::PatientsController
 
   def rooms_all_placed_for_today
     rooms_orders_placed = []
-    @wing.rooms.each do |room|
+    Room.all.each do |room|
       rooms_orders_placed << patients_all_placed_for_today(room)
     end
 

@@ -12,6 +12,9 @@ class Menu
   def find_foods_for_day_and_meal(day, meal)
     menu_day = self.days.select {|daysofg| daysofg.day == day} 
     menu_day = menu_day.first
+    if (menu_day == nil)
+      return []
+    end
     meals = menu_day.meals.select {|menu_meal| menu_meal.kind == meal} 
     meal = meals.first
     @foods = meal.foods
