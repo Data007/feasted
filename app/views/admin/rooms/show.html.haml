@@ -1,18 +1,18 @@
-%a.tile.icon.bg-color-green{href: admin_wing_room_patients_path(@wing, @room)}
+%a.tile.icon.bg-color-green{href: admin_room_patients_path(@room)}
   .tile-content
     %h1.icon-large.icon-user
   .brand
     .name
       Patient Management
 
-%a.tile.icon.bg-color-green{href: update_room_number_admin_wing_room_path(@wing, @room)}
+%a.tile.icon.bg-color-green{href: update_room_number_admin_room_path(@room)}
   .tile-content
     %h1.icon-large.icon-user
   .brand
     .name
       Edit Room Number
 
-%a.tile.icon.bg-color-green{href: update_patient_count_admin_wing_room_path(wing_id: @wing, room_id: @room)}
+%a.tile.icon.bg-color-green{href: update_patient_count_admin_room_path( room_id: @room)}
   .tile-content
     %h1.icon-large.icon-user
   .brand

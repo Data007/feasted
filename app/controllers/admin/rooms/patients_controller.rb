@@ -1,5 +1,4 @@
-class Admin::Wings::Rooms::PatientsController < Admin::Wings::RoomsController
-  before_filter :find_wing
+class Admin::Rooms::PatientsController < Admin::RoomsController
   before_filter :find_room
   before_filter :find_patient, except: [:index]
 
@@ -15,13 +14,13 @@ class Admin::Wings::Rooms::PatientsController < Admin::Wings::RoomsController
     @diet = Diet.find(params[:diet_id])
     @patient.diets << @diet
     @patient.save
-    redirect_to edit_admin_wing_room_patient_path(@wing, @room, @patient)
+    redirect_to edit_admin_room_patient_path(@room, @patient)
   end
 
   def destroy
     @delete_diet = Diet.find(params[:id])
     @patient.diets = @patient.diets.reject {|diet| diet == @delete_diet}
-    redirect_to edit_admin_wing_room_patient_path(@wing, @room, @patient)
+    redirect_to edit_admin_room_patient_path(@room, @patient)
   end
 
   def select_option_for_patient
@@ -33,7 +32,7 @@ class Admin::Wings::Rooms::PatientsController < Admin::Wings::RoomsController
 
   def update
     @patient.update_attributes params[:patient]
-    redirect_to [:admin, @wing, @room, @patient]
+    redirect_to [:admin, @room, @patient]
   end
 
 private
