@@ -4,7 +4,6 @@ class Room
 
   field :number, type: Integer
 
-  belongs_to :wing
   has_many :patients
 
   def update_patients(patient_count)
