@@ -1,0 +1,12 @@
+- @patients.each do |patient|      
+  .tiles
+    %a.tile.icon.bg-color-green{href: select_option_for_patient_admin_wing_room_patient_path(@wing, @room, patient)}
+      .tile-content
+        %h1.icon-large.icon-user-2
+      .brand
+        .name
+          - if patient.name.present?
+            = patient.name
+          - else
+            = patient.number.to_s
+

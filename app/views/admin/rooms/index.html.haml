@@ -1,0 +1,8 @@
+- @rooms.each do |room|
+  .tiles
+    %a.tile.icon.bg-color-green{href: admin_room_path( room) }
+      .tile-content
+        %h1.icon-large.icon-drawer-2
+      .brand
+        .name
+          = "Room #{room.number.to_s}"
