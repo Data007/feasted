@@ -1,0 +1,8 @@
+- @rooms.each do |room|      
+  .tiles
+    %a{:class => "tile icon bg-color-#{room.color}", href: room_patients_path( room)}
+      .tile-content
+        %h1.icon-large.icon-drawer-2
+      .brand
+        .name
+          = room.number

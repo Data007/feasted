@@ -1,0 +1,8 @@
+.tiles
+  - @foods.each do |food|      
+    = link_to wing_room_patient_meals_path(wing_id: @wing.id, room_id: @room.id, patient_id: @patient.id, id: @meal.id, food_id: food.id), method: :post, class: "tile icon bg-color-green" do
+      .tile-content
+        %h1.icon-large.icon-box 
+      .brand
+        .name
+        = food.name

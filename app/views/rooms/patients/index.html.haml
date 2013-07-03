@@ -1,0 +1,11 @@
+- @patients.each do |patient|      
+  .tiles
+    %a{:class => "tile icon bg-color-#{patient.patient_color}", href: wing_room_patient_meals_path(@wing, @room, patient)}
+      .tile-content
+        %h1.icon-large.icon-user
+      .brand
+        .name
+          - if patient.name.present?
+            = patient.name
+          - else
+            = patient.number.to_s
