@@ -7,24 +7,19 @@ Feasted::Application.routes.draw do
         end
       end
     end 
-    resources :wings do
+    resources :rooms, controller: 'wings/rooms' do
       member do
-        get :update_room_count
+        get :update_patient_count
+        get :update_room_number
       end
-      resources :rooms, controller: 'wings/rooms' do
+      resources :patients, controller: 'wings/rooms/patients' do
         member do
-          get :update_patient_count
-          get :update_room_number
+          get :select_option_for_patient
+          get :edit_patient_name
         end
-        resources :patients, controller: 'wings/rooms/patients' do
-          member do
-            get :select_option_for_patient
-            get :edit_patient_name
-          end
-        end
-        member do
-          get :update_patients
-        end
+      end
+      member do
+        get :update_patients
       end
     end
     resources :diets do
