@@ -2,17 +2,13 @@
   - @destroy_foods.each do |food|
     = link_to room_patient_meal_order_path( room_id: @room.id, patient_id: @patient.id, id: @meal.id, order_id: @order.id, food_id: food.id), method: :delete, class: "tile icon bg-color-green" do
       .tile-content
-        %h1.icon-large.icon-apple
-      .brand
-        .name
+        .just_letters
           = food.name
 
   %a{:class => "tile icon bg-color-green", href: place_order_room_patient_meal_order_path(@room, @patient, @meal, @order)}
     .tile-content
-      %h1.icon-large.icon-checkmark
-    .brand
-      .name
-        Place Order
+      .checkmark
+        %h1.icon-large.icon-checkmark
 
 %div.foods_to_select
   - @foods.each do |food|      
