@@ -2,10 +2,8 @@
   - @added_foods.each do |food|      
     =link_to admin_menu_day_meal_food_path(menu_id: @menu.id, day_id: @day.id, meal_id: @meal.id, id: food.id), method: :delete, class: "tile icon bg-color-green" do
       .tile-content
-        %h1.icon-large.icon-apple 
-      .brand
-        .name
-        = food.name
+        .just_letters
+          = food.name
 
 %div.foods_to_select
   - @foods.each do |food|      
@@ -14,5 +12,5 @@
         %h1.icon-large.icon-apple 
       .brand
         .name
-        = food.name
+          = food.name
 

@@ -17,6 +17,9 @@ class Menu
     end
     meals = menu_day.meals.select {|menu_meal| menu_meal.kind == meal} 
     meal = meals.first
+    if meal == nil
+      return []
+    end
     @foods = meal.foods
     return @foods
   end
