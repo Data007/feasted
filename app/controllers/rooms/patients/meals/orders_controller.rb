@@ -29,7 +29,6 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
     @menu = find_this_weeks_menu()
     days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)
     day = days[todays_date_number()]
-    binding.pry
     if @menu == nil
       @foods = []
       @destroy_foods = @order.foods
