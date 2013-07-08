@@ -35,4 +35,18 @@ class Room
       return "green"
     end
   end
+
+  def has_patients?
+    if patients.present?
+      if patients.first.name.present?
+        return true
+      elsif patients.last.name.present?
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
 end

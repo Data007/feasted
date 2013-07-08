@@ -2,7 +2,7 @@ class RoomsController < AdminController
   before_filter :find_room, except: [:index]
 
   def index
-    @rooms = Room.all
+    @rooms = Room.all.select {|room| room.has_patients?}
   end
 
 private
