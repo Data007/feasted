@@ -18,7 +18,7 @@ class Admin::RoomsController < AdminController
   end
 
   def create
-    @room = Room.create(params)
+    @room = Room.create(params[:room])
     redirect_to [:admin, :rooms]
   end
 
