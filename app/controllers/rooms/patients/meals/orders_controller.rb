@@ -49,7 +49,8 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
 
   def destroy
     @food = find_food
-    @order.foods = @order.foods.delete_if {|food| food == @food}
+    @order.foods = @order.foods.reject {|food| food.id == @food.id}
+    @order.save!
     redirect_to [:edit, @room, @patient, @meal, @order] 
   end
 
