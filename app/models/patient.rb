@@ -10,6 +10,7 @@ class Patient
   has_many :meals
   has_many :orders
   has_many :completed
+  has_many :allergies
 
 
   def foods meal_object

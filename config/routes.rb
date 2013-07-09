@@ -13,6 +13,7 @@ Feasted::Application.routes.draw do
         get :update_room_number
       end
       resources :patients, controller: 'rooms/patients' do
+        resources :allergies, controller: 'rooms/patients/allergies'
         member do
           get :select_option_for_patient
           get :edit_patient_name
@@ -21,6 +22,7 @@ Feasted::Application.routes.draw do
       member do
         get :update_patients
       end
+
     end
     resources :diets do
       resources :foods, controller: 'diets/foods'
