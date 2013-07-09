@@ -6,7 +6,7 @@ class Admin::Rooms::Patients::AllergiesController < Admin::Rooms::PatientsContro
   end
 
   def create
-    @patient.allergies.create(params[:allergy])
+    @allergy= Allergy.create(params[:allergy])
     redirect_to [:admin, @room, @patient, :allergies]
   end
 end

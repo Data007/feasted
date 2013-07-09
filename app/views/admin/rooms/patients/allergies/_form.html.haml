@@ -1,0 +1,9 @@
+= form_for [:admin, @room, @patient, @allergy] do |allergy_form|
+  %fieldset
+    %legend Allergy Details
+    .control-group
+      = allergy_form.label :kind, 'Food Allergy Type' 
+      .controls
+        = allergy_form.text_field :kind
+    .form-actions
+      = allergy_form.submit 'Save'
