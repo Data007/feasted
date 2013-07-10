@@ -12,13 +12,6 @@
     .name
       Edit Room Number
 
-%a.tile.icon.bg-color-green{href: update_patient_count_admin_room_path( room_id: @room)}
-  .tile-content
-    %h1.icon-large.icon-user
-  .brand
-    .name
-      Number of Patients
-
 =link_to admin_room_path(id: @room.id), method: :delete, class: "tile icon bg-color-redDark" do
   .tile-content
     %h1.icon-large.icon-cancel-2 

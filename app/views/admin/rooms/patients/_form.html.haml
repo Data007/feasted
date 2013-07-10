@@ -1,0 +1,9 @@
+= form_for  [:admin, @room, @patient] do |patient_form|
+  %fieldset
+    %legend Patient Details
+    .control-group
+      = patient_form.label :name, 'Name'
+      .controls
+        = patient_form.text_field :name
+    .form-actions
+      = patient_form.submit 'Save'

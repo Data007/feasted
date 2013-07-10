@@ -5,11 +5,6 @@ class Admin::RoomsController < AdminController
     @rooms = Room.all
   end
 
-  def update_patients
-    @room.update_patients(params[:patient_count])
-    redirect_to [ :admin, @wing, @room]
-  end
-
   def update_room_number
   end
 

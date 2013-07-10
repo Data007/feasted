@@ -1,6 +1,16 @@
+.tiles
+  %a.tile.icon.bg-color-green{href: new_admin_room_patient_path(@room)}
+    .tile-content
+      %h1.icon-large.icon-plus-2
+    .brand
+      .name
+        Add a Patient
+
+
+
 - @patients.each do |patient|      
   .tiles
-    %a.tile.icon.bg-color-green{href: select_option_for_patient_admin_room_patient_path(@room, patient)}
+    %a.tile.icon.bg-color-green{href: edit_admin_room_patient_path(@room, patient)}
       .tile-content
         %h1.icon-large.icon-user-2
       .brand

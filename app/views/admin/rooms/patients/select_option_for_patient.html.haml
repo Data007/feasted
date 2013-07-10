@@ -1,7 +1,7 @@
 .tiles
-  %a.tile.icon.bg-color-green{href: edit_admin_room_patient_path(@room, @patient)}
+  %a.tile.icon.bg-color-green{href: admin_room_patient_diets_path(@room, @patient)}
     .tile-content
-      %h1.icon-large.icon-pencil
+      %h1.icon-large.icon-clipboard
     .brand
       .name
         Patient Diets
@@ -15,7 +15,7 @@
 
   %a.tile.icon.bg-color-green{href: admin_room_patient_allergies_path(@room, @patient)}
     .tile-content
-      %h1.icon-large.icon-pencil
+      %h1.icon-large.icon-flag-2
     .brand
       .name
-        Edit Patient Name
+        Allergy Management
