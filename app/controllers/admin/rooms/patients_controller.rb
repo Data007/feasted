@@ -17,10 +17,6 @@ class Admin::Rooms::PatientsController < Admin::RoomsController
     redirect_to edit_admin_room_patient_path(@room, @patient)
   end
 
-  def select_option_for_patient
-    
-  end
-
   def edit_patient_name
   end
 
@@ -43,5 +39,4 @@ private
     patient_id = params[:patient_id].present? ? params[:patient_id] : params[:id]
     @patient = Patient.find(patient_id)
   end
-
 end
