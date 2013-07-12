@@ -4,3 +4,15 @@
   .brand
     .name
       Add an Allergy
+
+
+%div.right_side_bar
+  %table.allergies
+    %thead
+      %td
+        Allergies
+    %tbody
+      - @allergies.each do |allergy|
+        %tr
+          %td 
+            = allergy.kind 

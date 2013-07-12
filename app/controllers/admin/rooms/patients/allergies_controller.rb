@@ -9,4 +9,8 @@ class Admin::Rooms::Patients::AllergiesController < Admin::Rooms::PatientsContro
     @patient.allergies.create(params[:allergy])
     redirect_to [:admin, @room, @patient, :allergies]
   end
+
+  def index
+    @allergies = @patient.allergies
+  end
 end
