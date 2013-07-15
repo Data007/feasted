@@ -1,3 +1,44 @@
+%div.right_side_bar
+  %table.allergies
+    %thead
+      %td
+        Allergies
+      %td
+        &nbsp
+      %td
+        &nbsp
+    %tbody
+      - @patient.allergies.each do |allergy|
+        %tr
+          %td 
+            = allergy.kind 
+  %table.allergies
+    %thead
+      %td
+        Likes
+      %td
+        &nbsp
+      %td
+        &nbsp
+    %tbody
+      - @patient.likes.each do |like|
+        %tr
+          %td.likes
+            = like.description
+  %table.allergies
+    %thead
+      %td
+        Dislikes
+      %td
+        &nbsp
+      %td
+        &nbsp
+    %tbody
+      - @patient.dislikes.each do |dislike|
+        %tr
+          %td.dislikes 
+            = dislike.description
+
 %div.diet_foods
   - @destroy_foods.each do |food|
     = link_to room_patient_meal_order_path( room_id: @room.id, patient_id: @patient.id, id: @meal.id, order_id: @order.id, food_id: food.id), method: :delete, class: "tile icon bg-color-green" do
