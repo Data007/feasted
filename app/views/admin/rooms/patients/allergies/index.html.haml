@@ -11,8 +11,18 @@
     %thead
       %td
         Allergies
+      %td
+        &nbsp
+      %td
+        &nbsp
     %tbody
       - @allergies.each do |allergy|
         %tr
           %td 
             = allergy.kind 
+          %td
+            = link_to edit_admin_room_patient_allergy_path(room_id: @room.id, patient_id: @patient.id, id: allergy.id), class: "Tile icon bg-color-redDark" do
+              .tile-content
+                %h1.icon-large.icon-pencil
+          %td
+            Delete
