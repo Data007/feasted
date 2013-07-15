@@ -1,0 +1,29 @@
+%a.tile.icon.bg-color-green{href: new_admin_room_patient_like_path(@room, @patient) }
+  .tile-content
+    %h1.icon-large.icon-plus-2
+  .brand
+    .name
+      Add a Like
+
+%div.right_side_bar
+  %table.allergies
+    %thead
+      %td
+        Likes
+      %td
+        &nbsp
+      %td
+        &nbsp
+    %tbody
+      - @likes.each do |like|
+        %tr
+          %td 
+            = like.description 
+          %td{:style => "background-color: yellow"}
+            = link_to edit_admin_room_patient_like_path(room_id: @room.id, patient_id: @patient.id, id: like.id) do
+              .tile-content
+                %h4.icon-large.icon-pencil
+          %td{:style => "background-color: red"}
+            = link_to admin_room_patient_like_path(room_id: @room.id, patient_id: @patient.id, id: like.id), method: :delete do
+              .tile-content
+                %h4.icon-large.icon-cancel-2

@@ -11,6 +11,7 @@ class Patient
   has_many :orders
   has_many :completed
   has_many :allergies
+  has_many :likes
 
 
   def foods meal_object

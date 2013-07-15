@@ -15,6 +15,7 @@ Feasted::Application.routes.draw do
       resources :patients, controller: 'rooms/patients' do
         resources :diets, controller: 'rooms/patients/diets'
         resources :allergies, controller: 'rooms/patients/allergies'
+        resources :likes, controller: 'rooms/patients/likes'
         member do
           get :select_option_for_patient
           get :edit_patient_name

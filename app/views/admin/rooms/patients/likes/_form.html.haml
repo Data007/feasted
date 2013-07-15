@@ -1,0 +1,9 @@
+= form_for [:admin, @room, @patient, @like] do |like_form|
+  %fieldset
+    %legend Like Details
+    .control-group
+      = like_form.label :description, 'Description' 
+      .controls
+        = like_form.text_field :description
+    .form-actions
+      = like_form.submit 'Save'
