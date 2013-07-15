@@ -33,3 +33,7 @@
     .brand
       .name
         Dislikes Management
+  %a
+    = link_to admin_room_patient_path(room_id: @room.id, id: @patient.id), class: "tile icon bg-color-redDark",  method: :delete do
+      .tile-content
+        %h1.icon-large.icon-cancel-2

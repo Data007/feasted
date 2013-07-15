@@ -34,6 +34,11 @@ class Admin::Rooms::PatientsController < Admin::RoomsController
     redirect_to [:edit, :admin, @room, @patient]
   end
 
+  def destroy
+    @patient.destroy
+    redirect_to [:admin, @room, :patients]
+  end
+
 private
   def find_patient
     patient_id = params[:patient_id].present? ? params[:patient_id] : params[:id]
