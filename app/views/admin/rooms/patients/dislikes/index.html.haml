@@ -1,0 +1,29 @@
+%a.tile.icon.bg-color-green{href: new_admin_room_patient_dislike_path(@room, @patient) }
+  .tile-content
+    %h1.icon-large.icon-plus-2
+  .brand
+    .name
+      Add a Dislike
+
+%div.right_side_bar
+  %table.allergies
+    %thead
+      %td
+        Dislikes
+      %td
+        &nbsp
+      %td
+        &nbsp
+    %tbody
+      - @dislikes.each do |dislike|
+        %tr
+          %td 
+            = dislike.description 
+          %td{:style => "background-color: yellow"}
+            = link_to edit_admin_room_patient_dislike_path(room_id: @room.id, patient_id: @patient.id, id: dislike.id) do
+              .tile-content
+                %h4.icon-large.icon-pencil
+          %td{:style => "background-color: red"}
+            = link_to admin_room_patient_dislike_path(room_id: @room.id, patient_id: @patient.id, id: dislike.id), method: :delete do
+              .tile-content
+                %h4.icon-large.icon-cancel-2

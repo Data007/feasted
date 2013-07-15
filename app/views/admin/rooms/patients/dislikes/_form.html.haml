@@ -1,0 +1,10 @@
+= form_for [:admin, @room, @patient, @dislike] do |dislike_form|
+  %fieldset
+    %legend Dislike Details
+    .control-group
+      = dislike_form.label :description, 'Description' 
+      .controls
+        = dislike_form.text_field :description
+    .form-actions
+      = dislike_form.submit 'Save'
+
