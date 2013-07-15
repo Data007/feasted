@@ -20,6 +20,11 @@ class Admin::Rooms::Patients::AllergiesController < Admin::Rooms::PatientsContro
     redirect_to [:admin, @room, @patient, :allergies]
   end
 
+  def destroy
+    @allergy.destroy
+    redirect_to [:admin, @room, @patient, :allergies]
+  end
+
 private
   def find_allergy
     allergy_id = params[:allergy_id].present? ? params[:allergy_id] : params[:id]

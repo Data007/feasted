@@ -20,9 +20,12 @@
         %tr
           %td 
             = allergy.kind 
-          %td
-            = link_to edit_admin_room_patient_allergy_path(room_id: @room.id, patient_id: @patient.id, id: allergy.id), class: "Tile icon bg-color-redDark" do
+          %td{:style => "background-color: yellow"}
+            = link_to edit_admin_room_patient_allergy_path(room_id: @room.id, patient_id: @patient.id, id: allergy.id) do
               .tile-content
-                %h1.icon-large.icon-pencil
-          %td
-            Delete
+                %h4.icon-large.icon-pencil
+          %td{:style => "background-color: red"}
+            = link_to admin_room_patient_allergy_path(room_id: @room.id, patient_id: @patient.id, id: allergy.id), method: :delete do
+              .tile-content
+                %h4.icon-large.icon-cancel-2
+
