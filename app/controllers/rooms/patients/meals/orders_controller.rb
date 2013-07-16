@@ -54,6 +54,10 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
     redirect_to [:edit, @room, @patient, @meal, @order] 
   end
 
+  def show
+
+  end
+
   def place_order
     @order.update_attribute(:completed, true)
     @order.update_attribute(:meal_id, @meal.id)
