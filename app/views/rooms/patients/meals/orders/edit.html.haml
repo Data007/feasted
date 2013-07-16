@@ -2,12 +2,23 @@
   %table.allergies
     %thead
       %td
+        Diets
+    %tbody
+      - @patient.diets.each do |diet|
+        %tr
+          %td.diets 
+            = diet.name 
+
+  %table.allergies
+    %thead
+      %td
         Allergies
     %tbody
       - @patient.allergies.each do |allergy|
         %tr
           %td 
             = allergy.kind 
+
   %table.allergies
     %thead
       %td
@@ -17,6 +28,7 @@
         %tr
           %td.likes
             = like.description
+
   %table.allergies
     %thead
       %td
