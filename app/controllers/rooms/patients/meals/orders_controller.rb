@@ -44,17 +44,38 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
   def edit_order
     @food = find_food
     @order.foods += [@food]
-    redirect_to [:edit, @room, @patient, @meal, @order]
+    if params[:all_foods]
+      redirect_to [:show, @room, @patient, @meal, @order]
+    else
+      redirect_to [:edit, @room, @patient, @meal, @order]
+    end
   end
 
   def destroy
     @food = find_food
     @order.foods = @order.foods.reject {|food| food.id == @food.id}
     @order.save!
-    redirect_to [:edit, @room, @patient, @meal, @order] 
+    if params[:all_foods]
+      redirect_to [:show, @room, @patient, @meal, @order]
+    else
+      redirect_to [:edit, @room, @patient, @meal, @order] 
+    end
   end
 
   def show
+    @menu = find_this_weeks_menu()
+    days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)
+    day = days[todays_date_number()]
+    if @menu == nil
+      @foods = []
+      @destroy_foods = @order.foods
+      return
+    end
+    @menu_foods = @menu.find_foods_for_day_and_meal(day, @order.kind)
+
+    @foods = @menu_foods
+
+    @destroy_foods = @order.foods
 
   end
 
