@@ -26,7 +26,7 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
   end
 
   def edit
-    @menu = find_this_weeks_menu()
+    @menu = Menu.all.first
     days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)
     day = days[todays_date_number()]
     if @menu == nil
@@ -63,7 +63,7 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
   end
 
   def show
-    @menu = find_this_weeks_menu()
+    @menu = Menu.all.first
     days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)
     day = days[todays_date_number()]
     if @menu == nil
@@ -119,21 +119,6 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
   def find_food
     food_id = params[:food_id]
     @food = Food.find(food_id)
-  end
-
-  def find_this_weeks_menu
-    Menu.all.each do |menu|
-      month = menu.date.slice(0,2).to_i
-      day = menu.date.slice(3,2).to_i
-      year = menu.date.slice(6,4).to_i
-      date = Date.new(year, month, day)
-
-      if date.cweek == Date.today.cweek
-        return menu
-      end
-    end
-
-    return nil
   end
 
   def todays_date_number
