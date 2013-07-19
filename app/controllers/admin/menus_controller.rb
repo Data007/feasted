@@ -6,27 +6,6 @@ class Admin::MenusController < AdminController
     redirect_to [:admin, @menu, :days]
   end
 
-  def new
-    @menu = Menu.new
-  end
-
-  def create
-    @menu = Menu.create(params[:menu])
-    redirect_to admin_menus_path
-  end
-
-  def edit
-  end
-
-  def update
-    @menu.update_attributes params[:menu]
-    redirect_to admin_menus_path
-  end
-
-  def destroy
-    @menu.destroy
-    redirect_to [:admin, :menus], flash: {notice: "Your Menu has been deleted"}
-  end
 private
   def find_menu
     menu_id = params[:menu_id].present? ? params[:menu_id] : params[:id]
