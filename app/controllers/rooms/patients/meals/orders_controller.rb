@@ -37,6 +37,7 @@ class Rooms::Patients::Meals::OrdersController < Rooms::Patients::MealsControlle
     @menu_foods = @menu.find_foods_for_day_and_meal(day, @order.kind)
 
     @foods = @patient.menu_foods_with_diets(@menu_foods)
+    @foods = @foods.select {|food| food.kind == @meal.kind}
 
     @destroy_foods = @order.foods
   end
