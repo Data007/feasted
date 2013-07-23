@@ -1,6 +1,6 @@
 - @orders.each do |order|
   .tiles
-    %a.tile.icon.bg-color-green{}
+    %a.tile.icon.bg-color-green{href: admin_order_path(order)}
       .tile-content
         %h1.icon-large.icon-clipboard-2
       .brand
