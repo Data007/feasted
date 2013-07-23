@@ -5,4 +5,4 @@
         %h1.icon-large.icon-clipboard-2
       .brand
         .name
-          = order.id
+          = "#{order.find_room.number}:#{order.find_patient.name}"

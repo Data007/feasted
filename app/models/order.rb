@@ -9,4 +9,13 @@ class Order
   has_one :patient
   has_and_belongs_to_many :meal
   has_and_belongs_to_many :foods
+
+
+  def find_patient
+    return Patient.find(patient_id)
+  end
+
+  def find_room
+    return Room.find(room_id)
+  end
 end
