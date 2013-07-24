@@ -10,3 +10,12 @@
   %h3 Nutrition Service Menu
 
   %h4 Lunch
+  %table.diets
+    %thead
+      %td
+        Diets
+    %tbody
+      - @order.find_patient.diets.each do |diet|
+        %tr
+          %td.diets 
+            = diet.name 
