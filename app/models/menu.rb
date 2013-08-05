@@ -13,7 +13,8 @@ class Menu
       return []
     end
     meals = menu_day.meals.select {|menu_meal| menu_meal.kind == meal} 
-    meal = meals.first
+    meals = meals.select {|meal| meal.created_at.today?}
+    meal = meals.last
     if meal == nil
       return []
     end
