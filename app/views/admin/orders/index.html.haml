@@ -1,8 +1,32 @@
-- @orders.each do |order|
-  .tiles
-    %a.tile.icon.bg-color-green{href: admin_order_path(order)}
-      .tile-content
-        %h1.icon-large.icon-clipboard-2
-      .brand
-        .name
-          = "#{order.find_room.number}:#{order.find_patient.name}"
+%div.widest
+  %h2 Breakfast Orders
+  - @breakfast_orders.each do |order|
+    .tiles
+      %a.tile.icon.bg-color-green{href: admin_order_path(order)}
+        .tile-content
+          %h1.icon-large.icon-clipboard-2
+        .brand
+          .name
+            = "#{order.find_room.number}:#{order.find_patient.name}"
+
+%div.widest
+  %h2 Lunch Orders
+  - @lunch_orders.each do |order|
+    .tiles
+      %a.tile.icon.bg-color-green{href: admin_order_path(order)}
+        .tile-content
+          %h1.icon-large.icon-clipboard-2
+        .brand
+          .name
+            = "#{order.find_room.number}:#{order.find_patient.name}"
+
+%div.widest
+  %h2 Supper Orders
+  - @lunch_orders.each do |order|
+    .tiles
+      %a.tile.icon.bg-color-green{href: admin_order_path(order)}
+        .tile-content
+          %h1.icon-large.icon-clipboard-2
+        .brand
+          .name
+            = "#{order.find_room.number}:#{order.find_patient.name}"

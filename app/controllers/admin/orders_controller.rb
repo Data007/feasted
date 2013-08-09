@@ -3,6 +3,10 @@ class Admin::OrdersController < AdminController
   def index
     @orders = Order.all.select {|order| order.completed?}
     @orders = @orders.select {|order| order.created_at.today?}
+
+    @breakfast_orders = @orders.select {|order| order.kind == "Breakfast"}
+    @lunch_orders = @orders.select {|order| order.kind == "Lunch"}
+    @supper_orders = @orders.select {|order| order.kind == "Supper"}
   end
 
   def destroy
