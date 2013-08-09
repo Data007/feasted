@@ -10,6 +10,12 @@ class Admin::OrdersController < AdminController
     redirect_to [:admin, :orders] 
   end
 
+  def show
+    @likes = @order.find_patient.likes
+    @dislikes = @order.find_patient.dislikes
+    @allergies = @order.find_patient.allergies
+  end
+
 private
   def find_order
     order_id = params[:order_id].present? ? params[:order_id] : params[:id]

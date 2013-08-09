@@ -19,3 +19,42 @@
         %tr
           %td.diets 
             = diet.name 
+  %table.diets
+    %thead
+      %td
+        Foods
+    %tbody
+      - @order.foods.each do |food|
+        %tr
+          %td.diets 
+            = food.name 
+
+  %table.diets
+    %thead
+      %td
+        Likes
+    %tbody
+      - @likes.each do |like|
+        %tr
+          %td.diets 
+            = like.description 
+
+  %table.diets
+    %thead
+      %td
+        Dislikes
+    %tbody
+      - @dislikes.each do |dislike|
+        %tr
+          %td.diets 
+            = dislike.description 
+
+  %table.diets
+    %thead
+      %td
+        Allergies
+    %tbody
+      - @allergies.each do |allergies|
+        %tr
+          %td.diets 
+            = allergies.kind 
