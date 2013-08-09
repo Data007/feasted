@@ -14,6 +14,7 @@ class Admin::OrdersController < AdminController
     @likes = @order.find_patient.likes
     @dislikes = @order.find_patient.dislikes
     @allergies = @order.find_patient.allergies
+    @room_number = @order.find_room.number.to_s
   end
 
 private

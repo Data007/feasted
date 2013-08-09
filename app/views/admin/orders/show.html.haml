@@ -9,7 +9,8 @@
   %h2 Spectrum Health Big Rapids
   %h3 Nutrition Service Menu
 
-  %h4 Lunch
+  %h4
+    = @order.kind
   %table.diets
     %thead
       %td
@@ -58,3 +59,9 @@
         %tr
           %td.diets 
             = allergies.kind 
+
+  %h2
+    = "Room Number: #{@room_number}"
+
+  %h2 
+    = "Patient Name #{@order.find_patient.name}"
