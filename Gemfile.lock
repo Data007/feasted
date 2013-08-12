@@ -46,6 +46,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    daemon_controller (1.1.5)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -95,6 +96,10 @@ GEM
     multi_json (1.7.6)
     nokogiri (1.5.9)
     origin (1.1.0)
+    passenger (4.0.10)
+      daemon_controller (>= 1.1.0)
+      rack
+      rake (>= 0.8.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -195,6 +200,7 @@ DEPENDENCIES
   launchy
   mongoid
   mongoid-rspec
+  passenger
   pry
   pry-nav
   puma

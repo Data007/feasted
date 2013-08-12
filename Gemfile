@@ -30,6 +30,8 @@ gem 'haml_coffee_assets'
 
 gem 'mongoid'
 
+gem 'passenger'
+
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
