@@ -1,11 +1,4 @@
 .tiles
-  %a{:class => "tile icon bg-color-#{@patient.color("Breakfast")}", href: new_room_patient_meal_path(room_id: @room.id, patient_id: @patient.id, id: "Breakfast")}
-    .tile-content
-      %h1.icon-large.icon-coffee
-    .brand
-      .name
-        Breakfast
-.tiles
   %a{:class => "tile icon bg-color-#{@patient.color("Lunch")}", href: new_room_patient_meal_path(room_id: @room.id, patient_id: @patient.id, id: "Lunch")}
     .tile-content
       %h1.icon-large.icon-basket
@@ -19,6 +12,14 @@
     .brand
       .name
         Supper
+
+.tiles
+  %a{:class => "tile icon bg-color-#{@patient.color("Breakfast")}", href: new_room_patient_meal_path(room_id: @room.id, patient_id: @patient.id, id: "Breakfast")}
+    .tile-content
+      %h1.icon-large.icon-coffee
+    .brand
+      .name
+        Breakfast
   
   %a{:class => "tile icon bg-color-green", href: new_room_patient_completed_path( room_id: @room.id, patient_id: @patient.id)}
     .tile-content

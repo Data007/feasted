@@ -13,6 +13,10 @@
     = javascript_include_tag "application"
 
   %body
+    = link_to :back do
+      .tile-content
+        %h1.icon-large.icon-arrow-left-3
+
     = flash[:notice]
     = flash[:error]
     = yield
